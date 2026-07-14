@@ -1,0 +1,595 @@
+/* =========================================================
+   FOOTER — black slab, link columns, massive Jodha Bai mark.
+   The footer is fixed to the viewport bottom at a lower z-index
+   than the cream sections, so it only reveals as the page is
+   scrolled past them. The runway provides the scroll distance.
+   ========================================================= */
+
+.footer-runway {
+  position: relative;
+  z-index: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+.site-footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100vh;
+  background: #000;
+  color: #fff;
+  z-index: 1; /* below cream sections (2), above body */
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  overflow: hidden;
+  /* No pointer-events: none here — cream sections (z-index: 2) sit above the
+     footer (z-index: 1) so they naturally intercept scroll and click events
+     while they're in the viewport. Blocking pointer events on the footer shell
+     was redundant and prevented clicks on the legal buttons when revealed. */
+}
+
+.site-footer__inner {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 56px 40px 4vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 48px;
+}
+
+.site-footer__top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ---- Footer link columns ---- */
+.site-footer__cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1.4fr;
+  gap: 56px;
+  width: 100%;
+  padding-top: 36px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer-col__title {
+  display: block;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 18px;
+}
+
+.footer-col__lede {
+  font-family: "Instrument Serif", "Fraunces", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(20px, 1.8vw, 28px);
+  line-height: 1.3;
+  color: rgba(255, 255, 255, 0.92);
+  margin: 0;
+  max-width: 28ch;
+}
+
+.footer-col__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.footer-col__list a {
+  position: relative;
+  display: inline-block;
+  color: inherit;
+  transition: color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.footer-col__list a:hover {
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* ---- Social icons (Instagram + Facebook) ---- */
+.footer-social {
+  list-style: none;
+  margin: 22px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.footer-social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.85);
+  transition: background 0.35s var(--ease), color 0.35s var(--ease),
+    border-color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.footer-social__link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-social__link:hover {
+  background: #fff;
+  color: #000;
+  border-color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ---- Legal row ---- */
+.site-footer__legal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding-top: 24px;
+  padding-bottom: 32px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+.site-footer__legal a {
+  color: inherit;
+  transition: color 0.3s var(--ease);
+}
+
+.site-footer__legal a:hover {
+  color: #fff;
+}
+
+.legal-trigger {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  transition: color 0.3s var(--ease);
+}
+
+.legal-trigger:hover {
+  color: #fff;
+}
+
+/* ---- Legal modal ---- */
+
+.legal-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.legal-modal.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.legal-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s var(--ease);
+}
+
+.legal-modal.is-open .legal-modal__backdrop {
+  opacity: 1;
+}
+
+.legal-modal__panel {
+  position: relative;
+  z-index: 1;
+  width: min(680px, 92vw);
+  max-height: 82vh;
+  background: #0f0f0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.legal-modal.is-open .legal-modal__panel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Tab bar */
+.legal-modal__tabs {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0 56px 0 12px; /* right padding leaves room for close button */
+}
+
+.legal-modal__tab {
+  position: relative;
+  z-index: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  padding: 20px 16px 18px;
+  transition: color 0.25s var(--ease);
+  white-space: nowrap;
+}
+
+.legal-modal__tab[aria-selected="true"] {
+  color: #fff;
+}
+
+.legal-modal__tab:hover {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.legal-modal__tab:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+
+/* Sliding ink indicator */
+.legal-modal__tab-ink {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px 2px 0 0;
+  transition: left 0.3s var(--ease), width 0.3s var(--ease);
+  pointer-events: none;
+}
+
+/* Close button */
+.legal-modal__close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.45);
+  border-radius: 50%;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease);
+  z-index: 2;
+}
+
+.legal-modal__close:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.legal-modal__close:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Scrollable body */
+.legal-modal__body {
+  overflow-y: auto;
+  flex: 1;
+  padding: 32px 36px 44px;
+  /* Custom scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.15) transparent;
+}
+
+.legal-modal__body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.legal-modal__body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.legal-modal__body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+/* Panes */
+.legal-modal__pane {
+  display: none;
+}
+
+.legal-modal__pane.is-active {
+  display: block;
+  animation: legalPaneIn 0.2s var(--ease) both;
+}
+
+@keyframes legalPaneIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Typography */
+.legal-modal__heading {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin: 0 0 28px;
+}
+
+.legal-modal__text {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.72);
+  margin: 0 0 18px;
+}
+
+.legal-modal__text:last-child {
+  margin-bottom: 0;
+}
+
+.legal-modal__text a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s var(--ease);
+}
+
+.legal-modal__text a:hover {
+  color: #fff;
+}
+
+.legal-modal__text strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.legal-modal__list {
+  list-style: none;
+  margin: 0 0 18px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.legal-modal__list li {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+  padding-left: 20px;
+  position: relative;
+}
+
+.legal-modal__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.legal-modal__list li strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+/* Mobile: bottom sheet style */
+@media (max-width: 720px) {
+  .legal-modal {
+    align-items: flex-end;
+  }
+
+  .legal-modal__panel {
+    width: 100%;
+    max-height: 88vh;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  .legal-modal__body {
+    padding: 24px 20px 40px;
+  }
+
+  .legal-modal__tabs {
+    padding: 0 52px 0 8px;
+  }
+
+  .legal-modal__tab {
+    font-size: 10px;
+    padding: 18px 12px 16px;
+    letter-spacing: 0.16em;
+  }
+}
+
+/* ---- Massive brand mark — pinned at the very bottom, one line ---- */
+.site-footer__brand {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 300;
+  font-size: clamp(64px, 19vw, 320px);
+  line-height: 0.85;
+  letter-spacing: -0.025em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+  margin: 0;
+  color: #fff;
+  /* Gentle parallax: the brand drifts up a touch as it's revealed,
+     driven by footer.js via --footer-shift. */
+  transform: translateY(calc(var(--footer-shift, 0) * 1px));
+  transition: transform 0.06s linear;
+}
+
+/* =========================================================
+   RESPONSIVE — tablet + mobile (≤1024px)
+   Switch to a static, flowing footer so the parallax is
+   scroll-into-view rather than the fixed-reveal desktop mode.
+   ========================================================= */
+@media (max-width: 1024px) {
+  .footer-runway {
+    display: none;
+  }
+
+  .site-footer {
+    position: static;
+    height: auto;
+    min-height: 0;
+    align-items: stretch;
+    /* overflow: hidden lets the brand start below the fold and
+       drift up into view without spilling outside the footer */
+    overflow: hidden;
+    pointer-events: auto;
+  }
+
+  .site-footer__cols {
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+    padding-top: 28px;
+  }
+
+  .footer-col--lede {
+    grid-column: 1 / -1;
+  }
+
+  /* Brand: JS drives translateY for the parallax — no override here */
+  .site-footer__brand {
+    will-change: transform;
+    transition: transform 0.06s linear, opacity 0.18s linear;
+  }
+
+  /* Footer inner sections also get parallax-driven transforms on mobile.
+     JS applies the inline style; we just need the transition + GPU hint
+     so the motion stays buttery as the footer scrolls into view. */
+  .site-footer__top,
+  .site-footer__cols,
+  .site-footer__legal {
+    will-change: transform, opacity;
+    transition: transform 0.08s linear, opacity 0.2s linear;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE — mobile only (≤720px)
+   ========================================================= */
+@media (max-width: 720px) {
+  .site-footer__inner {
+    padding: 56px 20px 28px;
+    gap: 28px;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .site-footer__top {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+  }
+
+  .site-footer__cols {
+    gap: 28px 22px;
+  }
+
+  .footer-col__lede {
+    font-size: 18px;
+    max-width: 100%;
+  }
+
+  .footer-col__title {
+    margin-bottom: 12px;
+  }
+
+  .footer-col__list {
+    font-size: 13px;
+    gap: 8px;
+  }
+
+  .footer-social {
+    margin-top: 16px;
+  }
+
+  .footer-social__link {
+    width: 36px;
+    height: 36px;
+  }
+
+  .site-footer__legal {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    padding-top: 18px;
+    padding-bottom: 0;
+  }
+
+  .site-footer__brand {
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 16vw;
+    line-height: 0.9;
+    letter-spacing: -0.02em;
+    margin: 4px auto 0;
+  }
+}

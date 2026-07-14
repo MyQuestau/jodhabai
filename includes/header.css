@@ -1,0 +1,605 @@
+/* =========================================================
+   HEADER — fixed CTAs + full-screen menu overlay.
+   Loaded on every page via <link rel="stylesheet"
+   href="includes/header.css">.
+   ========================================================= */
+
+/* ---- Fixed action buttons (Book now + Menu) ---- */
+.hero__actions {
+  /* Fixed at the same visual spot the buttons originally sat in
+     (hero padding 28 + bar padding 28/32). Sits above all sections
+     so it stays visible across the page. */
+  position: fixed;
+  top: 56px;
+  right: 60px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end; /* sized to content — Book now is naturally wider */
+  gap: 14px;
+}
+
+/* ---- Brand mark used inside the menu overlay top bar ---- */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+}
+
+.brand--light {
+  color: var(--cream);
+}
+
+/* ---- Pill buttons used inside the menu overlay ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: background 0.4s var(--ease), color 0.4s var(--ease),
+    border-color 0.4s var(--ease), transform 0.4s var(--ease);
+  white-space: nowrap;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.btn-ghost--light {
+  background: rgba(243, 237, 225, 0.06);
+  border-color: rgba(243, 237, 225, 0.35);
+  color: var(--cream);
+}
+
+.btn-ghost--light:hover {
+  background: rgba(243, 237, 225, 0.12);
+  border-color: rgba(243, 237, 225, 0.6);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+  display: inline-block;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.dot--light {
+  background: var(--cream);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1.1); }
+}
+
+/* ---------------------------------------------------------
+   CTA — mirrored-glass pills (the fixed Book now / Menu and
+   every Enquire button). Frosted backdrop blur with a black
+   tint, a smudged specular streak sitting on the surface,
+   and a shine that sweeps across on hover.
+   --------------------------------------------------------- */
+.cta {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 11px 11px 11px 22px;
+  overflow: hidden; /* clips the smudge + shine sweep to the pill */
+  /* Smoked mirror glass: translucent ink wash over a heavy
+     backdrop blur, so whatever sits behind smears through dark. */
+  background: linear-gradient(
+    135deg,
+    rgba(28, 29, 26, 0.88) 0%,
+    rgba(28, 29, 26, 0.72) 55%,
+    rgba(42, 42, 38, 0.85) 100%
+  );
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  color: var(--cream);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),      /* top glass edge */
+    inset 0 -8px 14px rgba(0, 0, 0, 0.35),        /* dark pooling at the base */
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.12),  /* hairline inner rim */
+    0 8px 26px -10px rgba(0, 0, 0, 0.45);
+  transition: background 0.4s var(--ease), border-color 0.4s var(--ease),
+    transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+/* Smudged reflection — a soft diagonal streak resting on the glass,
+   like a thumb-smeared highlight. Sweeps across the pill on hover. */
+.cta::before {
+  content: "";
+  position: absolute;
+  top: -45%;
+  bottom: -45%;
+  left: 6%;
+  width: 34%;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.55) 40%,
+    rgba(255, 255, 255, 0.18) 62%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(7px);
+  transform: skewX(-18deg);
+  pointer-events: none;
+  transition: transform 0.75s var(--ease), opacity 0.4s var(--ease);
+}
+
+/* Second, fainter smudge near the right edge for the mirrored read */
+.cta::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  bottom: -40%;
+  right: 4%;
+  width: 12%;
+  background: linear-gradient(
+    105deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  filter: blur(9px);
+  transform: skewX(-18deg);
+  pointer-events: none;
+}
+
+/* Keep the label and icon above the glass streaks */
+.cta__label,
+.cta__icon {
+  position: relative;
+  z-index: 1;
+}
+
+.cta:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(20, 21, 18, 0.94) 0%,
+    rgba(28, 29, 26, 0.8) 55%,
+    rgba(48, 48, 43, 0.9) 100%
+  );
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -8px 16px rgba(0, 0, 0, 0.4),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.18),
+    0 16px 36px -14px rgba(0, 0, 0, 0.5);
+}
+
+/* Shine sweep — the smudge slides across the face of the pill */
+.cta:hover::before {
+  transform: skewX(-18deg) translateX(340%);
+}
+
+/* Fallback where backdrop-filter isn't supported: a soft but solid
+   gold-glass so text always sits on something. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .cta {
+    background: var(--ink);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta,
+  .cta::before {
+    transition: none;
+  }
+  .cta:hover::before {
+    transform: skewX(-18deg);
+  }
+}
+
+/* Slide-up text reveal on hover */
+.cta__label {
+  position: relative;
+  display: inline-block;
+  height: 1em;
+  line-height: 1;
+  overflow: hidden;
+}
+
+.cta__text {
+  display: block;
+  height: 1em;
+  line-height: 1;
+  transition: transform 0.5s var(--ease);
+}
+
+.cta:hover .cta__text {
+  transform: translateY(-100%);
+}
+
+/* Icon — cream circle holding a dark glyph, so it reads as a
+   distinct chip against the now-black CTA pill */
+.cta__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: var(--cream);
+  color: var(--ink);
+  flex-shrink: 0;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+  transition: background 0.4s var(--ease);
+}
+
+.cta:hover .cta__icon {
+  background: #fff;
+}
+
+/* Arrow — dark ink, rotates 45° on hover */
+.cta__icon--arrow svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 0.5s var(--ease);
+}
+
+.cta:hover .cta__icon--arrow svg {
+  transform: rotate(45deg);
+}
+
+/* Hamburger — two short dark ink lines */
+.cta__icon--burger {
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cta__icon--burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--ink);
+  border-radius: 2px;
+  transition: width 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.cta:hover .cta__icon--burger span:first-child {
+  width: 14px;
+  transform: translateX(8px);
+}
+
+/* =========================================================
+   MENU OVERLAY
+   ========================================================= */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--overlay);
+  color: var(--cream);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-2%);
+  transition: opacity 0.55s var(--ease), transform 0.7s var(--ease);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.menu-overlay.is-open {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.menu-overlay__bar {
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(243, 237, 225, 0.1);
+}
+
+.menu-overlay__inner {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 28px 40px 24px;
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.menu-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+.menu-list li {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  /* Right-align at the li level too so the link (and its inner spans)
+     is pushed all the way to the right edge — belt-and-braces with
+     the .menu-link's own justify-content: flex-end. */
+  justify-content: flex-end;
+  border-bottom: 1px solid rgba(243, 237, 225, 0.1);
+}
+
+.menu-link {
+  display: flex;
+  align-items: center;
+  /* Push the row contents (number + label) all the way to the right
+     side of the menu instead of sitting on the left. */
+  justify-content: flex-end;
+  gap: 24px;
+  width: 100%;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(28px, 5.2vw, 80px);
+  line-height: 1;
+  color: var(--cream);
+  text-align: right;
+  transition: color 0.35s var(--ease), padding-right 0.5s var(--ease);
+}
+
+.menu-link:hover {
+  color: #fff;
+  /* Right-aligned items now drift LEFT on hover — same "pull toward
+     the cursor" feel, mirrored for the new layout. */
+  padding-right: 18px;
+  font-style: italic;
+}
+
+.menu-num {
+  font-family: var(--sans);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  font-weight: 400;
+  opacity: 0.55;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.menu-foot {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(243, 237, 225, 0.1);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(243, 237, 225, 0.75);
+}
+
+.menu-foot a:hover { color: var(--cream); }
+
+.menu-foot__label {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(243, 237, 225, 0.45);
+  margin-bottom: 10px;
+}
+
+/* Stagger fade-in of menu links when overlay opens */
+.menu-overlay .menu-list li {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.menu-overlay.is-open .menu-list li {
+  opacity: 1;
+  transform: translateY(0);
+}
+.menu-overlay.is-open .menu-list li:nth-child(1) { transition-delay: 0.18s; }
+.menu-overlay.is-open .menu-list li:nth-child(2) { transition-delay: 0.26s; }
+.menu-overlay.is-open .menu-list li:nth-child(3) { transition-delay: 0.34s; }
+.menu-overlay.is-open .menu-list li:nth-child(4) { transition-delay: 0.42s; }
+.menu-overlay.is-open .menu-list li:nth-child(5) { transition-delay: 0.50s; }
+.menu-overlay.is-open .menu-list li:nth-child(6) { transition-delay: 0.58s; }
+
+.menu-overlay .menu-foot {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease) 0.55s, transform 0.6s var(--ease) 0.55s;
+}
+.menu-overlay.is-open .menu-foot {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.menu-open {
+  overflow: hidden;
+}
+
+/* =========================================================
+   RESPONSIVE — header at mobile widths
+   ========================================================= */
+@media (max-width: 720px) {
+  .menu-overlay__bar {
+    padding: 14px 18px;
+  }
+  .menu-overlay__inner {
+    padding: 14px 22px 16px;
+    /* Safety net: if a very short/landscape viewport can't fit the full
+       nav list + footer block, scroll internally rather than clipping
+       or hiding content — everything the desktop menu shows must stay
+       reachable on mobile too. */
+    overflow-y: auto;
+  }
+  /* On mobile the list hugs its own content instead of stretching to
+     fill all remaining height. It's reordered after .menu-foot (see
+     below) and pushed to the bottom of the overlay with margin-top:
+     auto, so the layout reads regular text top-right, nav links
+     bottom-right — the reverse of the desktop stacking order. */
+  .menu-list {
+    flex: 0 0 auto;
+    gap: 0;
+    order: 2;
+    margin-top: auto;
+  }
+  .menu-list li {
+    flex: 0 0 auto;
+    border-bottom: 0;
+  }
+  /* A hairline strictly between rows — none above the first or below
+     the last — plus extra padding so the border reads as breathing
+     room, not a line crammed against the text either side of it. */
+  .menu-list li + li {
+    border-top: 1px solid rgba(243, 237, 225, 0.14);
+  }
+  .menu-link {
+    font-size: clamp(32px, 11vw, 64px);
+    padding: 16px 0;
+  }
+  .hero__actions {
+    /* On mobile the CTAs sit pinned to the bottom-right — opposite of desktop */
+    top: auto;
+    bottom: 14px;
+    right: 14px;
+    gap: 6px;
+    flex-direction: column-reverse; /* keep Book now on top of Menu */
+  }
+  /* Compact pill — noticeably smaller across the board on mobile. */
+  .cta {
+    padding: 6px 6px 6px 14px;
+    font-size: 13px;
+    gap: 8px;
+    letter-spacing: 0.05em;
+  }
+  .cta__icon {
+    width: 28px;
+    height: 28px;
+  }
+  .cta__icon--arrow svg {
+    width: 14px;
+    height: 14px;
+  }
+  .cta__icon--burger span {
+    width: 12px;
+    height: 1.5px;
+    gap: 4px;
+  }
+  .cta__icon--burger {
+    gap: 4px;
+  }
+  /* Same Find us / Follow / Reach out content as desktop, just
+     restacked into one column, right-aligned to match the nav links,
+     and ordered before the nav list so it sits top-right while the
+     links sit bottom-right. */
+  .menu-foot {
+    order: 1;
+    grid-template-columns: 1fr;
+    justify-items: end;
+    text-align: right;
+    gap: 10px;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  .menu-foot__label {
+    margin-bottom: 4px;
+  }
+  .btn {
+    padding: 10px 14px;
+    font-size: 12px;
+  }
+  .menu-num {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   BACK TO TOP BUTTON
+   ========================================================= */
+.back-to-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 80;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(28, 29, 26, 0.72);
+  backdrop-filter: blur(12px) saturate(1.3);
+  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  color: var(--cream);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease, background 0.3s ease;
+  pointer-events: none;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 20px rgba(0, 0, 0, 0.28);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:hover {
+  background: rgba(42, 42, 38, 0.85);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 720px) {
+  .back-to-top {
+    display: none;
+  }
+}

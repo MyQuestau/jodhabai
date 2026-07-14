@@ -1,0 +1,440 @@
+/* =========================================================
+   events.css — Events page in the site's cream editorial
+   language: inset-image hero (mirrors the homepage hero),
+   alternating corner-marked chapter pairs (mirrors the
+   homepage occasions ledger), cream typographic closing CTA.
+   Builds on tokens from ../index.css and page.css.
+   ========================================================= */
+
+/* =========================================================
+   HERO — inset image frame on cream, compresses on scroll
+   ========================================================= */
+.ev-hero {
+  position: relative;
+  z-index: 2;
+  height: 100vh;
+  min-height: 640px;
+  background: var(--cream);
+  padding: 28px;
+  transition: padding-left 0.12s linear, padding-right 0.12s linear;
+}
+
+.ev-hero__frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.ev-hero__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+  transform: scale(1.04);
+  animation: evHeroZoom 14s var(--ease) forwards;
+}
+
+@keyframes evHeroZoom {
+  to { transform: scale(1); }
+}
+
+.ev-hero__darken {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: #000;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.ev-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.08) 0%,
+    rgba(0, 0, 0, 0.28) 45%,
+    rgba(0, 0, 0, 0.75) 100%
+  );
+}
+
+.ev-hero__content {
+  position: relative;
+  z-index: 2;
+  padding: 0 8vw 10vh;
+  max-width: 1100px;
+}
+
+.ev-hero__badge {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(243, 237, 225, 0.6);
+  margin-bottom: 28px;
+}
+
+.ev-hero__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(56px, 8.4vw, 132px);
+  line-height: 0.95;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+  margin: 0 0 32px;
+}
+
+.ev-hero__title em {
+  font-style: italic;
+}
+
+.ev-hero__lede {
+  font-family: "Instrument Serif", var(--serif), Georgia, serif;
+  font-size: clamp(17px, 1.5vw, 22px);
+  line-height: 1.6;
+  color: rgba(243, 237, 225, 0.85);
+  max-width: 54ch;
+  margin: 0;
+}
+
+/* =========================================================
+   CHAPTERS — alternating editorial pairs on cream
+   ========================================================= */
+.ev-chapters {
+  position: relative;
+  z-index: 2;
+  background: var(--cream);
+  padding: 110px 56px 40px;
+}
+
+.ev-chapter {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: clamp(36px, 5vw, 80px);
+  align-items: center;
+  max-width: 1280px;
+  margin: 0 auto 110px;
+}
+
+.ev-chapter:last-child {
+  margin-bottom: 60px;
+}
+
+.ev-chapter--flip .ev-chapter__media {
+  order: 2;
+}
+
+/* ---- Image frame with the site's corner marks ---- */
+.ev-chapter__media {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--cream-2);
+  /* Scroll-in state — events.js adds .is-revealed */
+  opacity: 0;
+  transform: translateY(48px);
+  transition:
+    opacity 0.9s var(--ease),
+    transform 0.9s var(--ease);
+  will-change: transform, opacity;
+}
+
+.ev-chapter__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.14);
+  transition: transform 1.3s var(--ease);
+  will-change: transform;
+}
+
+.ev-chapter.is-revealed .ev-chapter__media {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ev-chapter.is-revealed .ev-chapter__media img {
+  transform: scale(1.02);
+}
+
+.ev-chapter:hover .ev-chapter__media img {
+  transform: scale(1.08);
+}
+
+/* ---- Text side ---- */
+.ev-chapter__body {
+  /* Scroll-in state — trails the image slightly */
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.9s var(--ease) 0.12s,
+    transform 0.9s var(--ease) 0.12s;
+  will-change: transform, opacity;
+}
+
+.ev-chapter.is-revealed .ev-chapter__body {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ev-chapter__num {
+  display: block;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+
+.ev-chapter__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(40px, 5.4vw, 84px);
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.ev-chapter__title em {
+  font-family: "Instrument Serif", "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.72em;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.ev-chapter__text {
+  font-family: var(--sans);
+  font-size: clamp(15px, 1.1vw, 16px);
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--muted);
+  max-width: 46ch;
+  margin: 0 0 32px;
+}
+
+/* ---- Chapter link — circle arrow + label, mirrors occasions rows ---- */
+.ev-chapter__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+  transition: gap 0.35s var(--ease);
+}
+
+.ev-chapter__link:hover {
+  gap: 20px;
+}
+
+.ev-chapter__link-arrow {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  transition:
+    background 0.4s var(--ease),
+    border-color 0.4s var(--ease),
+    transform 0.4s var(--ease);
+}
+
+.ev-chapter__link-arrow svg {
+  width: 17px;
+  height: 17px;
+}
+
+.ev-chapter__link:hover .ev-chapter__link-arrow {
+  background: linear-gradient(135deg, rgba(28, 29, 26, 0.85), rgba(28, 29, 26, 0.7));
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  color: var(--cream);
+  transform: rotate(45deg);
+}
+
+/* =========================================================
+   CLOSING CTA — cream, centred, gold pill, lift-off edge
+   ========================================================= */
+.ev-cta {
+  position: relative;
+  z-index: 2;
+  background: var(--cream);
+  border-radius: 0 0 40px 40px;
+  box-shadow: 0 60px 80px -50px rgba(0, 0, 0, 0.55);
+  padding: 120px 32px 160px;
+  text-align: center;
+}
+
+.ev-cta__inner {
+  max-width: 760px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.ev-cta.is-visible .ev-cta__inner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ev-cta__mark {
+  display: block;
+  font-size: 18px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+
+.ev-cta__kicker {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.ev-cta__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0 0 24px;
+}
+
+.ev-cta__title em {
+  font-family: "Instrument Serif", "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.ev-cta__lede {
+  font-family: "Instrument Serif", var(--serif), Georgia, serif;
+  font-size: clamp(17px, 1.4vw, 20px);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 46ch;
+  margin: 0 auto 48px;
+}
+
+.ev-cta .cta {
+  font-size: 18px;
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  .ev-hero__img {
+    animation: none;
+    transform: scale(1);
+  }
+  .ev-chapter__media,
+  .ev-chapter__media img,
+  .ev-chapter__body,
+  .ev-cta__inner {
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 960px) {
+  .ev-chapter {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 88px;
+  }
+  /* Image always leads on small screens regardless of --flip */
+  .ev-chapter--flip .ev-chapter__media {
+    order: 0;
+  }
+  .ev-chapter__media {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 720px) {
+  .ev-hero {
+    padding: 14px;
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  .ev-hero__frame {
+    border-radius: 20px;
+  }
+  .ev-hero__content {
+    padding: 0 24px 72px;
+  }
+  .ev-hero__title {
+    font-size: clamp(42px, 13vw, 64px);
+  }
+  .ev-hero__lede {
+    font-size: 16px;
+  }
+
+  .ev-chapters {
+    padding: 72px 20px 24px;
+  }
+  .ev-chapter {
+    margin-bottom: 72px;
+  }
+  .ev-chapter__media {
+    border-radius: 18px;
+  }
+  .ev-chapter__title {
+    font-size: clamp(34px, 11vw, 52px);
+  }
+  .ev-chapter__text {
+    max-width: 100%;
+  }
+  .ev-chapter__link-arrow {
+    width: 38px;
+    height: 38px;
+  }
+
+  .ev-cta {
+    padding: 88px 24px 120px;
+    border-radius: 0 0 28px 28px;
+  }
+  .ev-cta__title {
+    font-size: clamp(38px, 12vw, 56px);
+  }
+}

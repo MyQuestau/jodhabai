@@ -1,0 +1,87 @@
+/* =========================================================
+   base.css — shared foundation for every page: design tokens,
+   resets, and the corner-mark brackets used site-wide.
+   Load this FIRST on all pages. Homepage-only styles stay in
+   index.css; sub-pages no longer load index.css at all.
+   ========================================================= */
+
+:root {
+  --cream: #f3ede1;
+  --cream-2: #ebe3d3;
+  --ink: #1c1d1a;
+  --ink-soft: #2a2a26;
+  --muted: #6f6a5e;
+  --line: rgba(28, 29, 26, 0.18);
+  --line-soft: rgba(28, 29, 26, 0.1);
+  --accent: #8a6f4f;
+  --overlay: #14150f;
+
+  --serif: "Fraunces", "Times New Roman", serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --ease: cubic-bezier(0.65, 0.05, 0.35, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  /* Page bg is black so the fixed footer (also black) blends seamlessly
+     with the body backdrop while cream sections sit on top via z-index. */
+  background: #000;
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+/* ---- Corner marks — small brackets at each corner of each frame ---- */
+.gallery__corner {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  pointer-events: none;
+  z-index: 4;
+  border: 0 solid rgba(243, 237, 225, 0.9);
+  transition: border-color 0.4s var(--ease);
+}
+
+.gallery__corner--tl {
+  top: 18px;
+  left: 18px;
+  border-top-width: 2px;
+  border-left-width: 2px;
+}
+.gallery__corner--tr {
+  top: 18px;
+  right: 18px;
+  border-top-width: 2px;
+  border-right-width: 2px;
+}
+.gallery__corner--bl {
+  bottom: 18px;
+  left: 18px;
+  border-bottom-width: 2px;
+  border-left-width: 2px;
+}
+.gallery__corner--br {
+  bottom: 18px;
+  right: 18px;
+  border-bottom-width: 2px;
+  border-right-width: 2px;
+}
+

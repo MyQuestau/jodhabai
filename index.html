@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jodha Bai is a private palace estate in Terranora, NSW, reserved exclusively for weddings, photo and film shoots, proposals and unforgettable private events." />
+  <meta name="theme-color" content="#f3ede1" />
+  <link rel="canonical" href="https://jodhabairetreat.com/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Jodha Bai" />
+  <meta property="og:title" content="Jodha Bai: A Private Palace Estate, Terranora" />
+  <meta property="og:description" content="Jodha Bai is a private palace estate in Terranora, NSW, reserved exclusively for weddings, photo and film shoots, proposals and unforgettable private events." />
+  <meta property="og:url" content="https://jodhabairetreat.com/" />
+  <meta property="og:image" content="https://jodhabairetreat.com/images/mainresidence/mainresidence1.webp" />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:image:alt" content="The Jodha Bai palace residence in the Terranora hills" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": ["EventVenue", "LocalBusiness"],
+    "name": "Jodha Bai",
+    "description": "A private palace estate in the Terranora hills, reserved exclusively for weddings, photo and film shoots, proposals and private events, with five star registered short term rental accommodation across the Main Residence, Jodha Bai Suite and Lotus House.",
+    "url": "https://jodhabairetreat.com/",
+    "email": "bookings@jodhabairetreat.com",
+    "telephone": "+61416598937",
+    "image": "https://jodhabairetreat.com/images/mainresidence/mainresidence1.webp",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Terranora",
+      "addressRegion": "NSW",
+      "addressCountry": "AU"
+    },
+    "sameAs": [
+      "https://www.instagram.com/jodhabairetreat/",
+      "https://www.facebook.com/JodhaBaiRetreat/"
+    ]
+  }
+  </script>
+  <title>Jodha Bai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500&family=Instrument+Serif:ital@0;1&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="includes/base.css" />
+  <link rel="stylesheet" href="includes/header.css" />
+  <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="includes/footer.css" />
+</head>
+<body>
+  <!-- Splash loader — index.js removes this after ~3 s -->
+  <div id="page-loader" aria-hidden="true">
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <!-- Warps the whole smoke mass so blob edges tear into irregular,
+           roiling cloud shapes instead of staying circular. -->
+      <filter id="loaderSmokeWarp" x="-40%" y="-40%" width="180%" height="180%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.010 0.022" numOctaves="4" seed="11" result="warpNoise">
+          <animate attributeName="baseFrequency" values="0.009 0.020;0.013 0.026;0.009 0.020" dur="14s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="70" xChannelSelector="R" yChannelSelector="G" />
+      </filter>
+      <!-- Faster, finer noise laid on top as a screen-blended grain
+           layer for visible wisp detail. -->
+      <filter id="loaderSmokeGrain" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="4" result="grain">
+          <animate attributeName="baseFrequency" values="0.026;0.038;0.026" dur="9s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feColorMatrix in="grain" type="matrix"
+          values="0 0 0 0 0.93
+                  0 0 0 0 0.91
+                  0 0 0 0 0.85
+                  0 0 0 0.5 0" />
+      </filter>
+    </svg>
+
+    <div class="loader-smoke" id="loaderSmoke" aria-hidden="true">
+      <div class="smoke-mass">
+        <div class="smoke-back" id="loaderSmokeBack"></div>
+        <div class="smoke-fore" id="loaderSmokeFore"></div>
+      </div>
+      <div id="loaderSparkLayer"></div>
+      <div id="loaderTextureHolder"></div>
+    </div>
+
+    <div class="loader__inner">
+      <span class="loader__welcome">Welcome to</span>
+      <span class="loader__name">Jodha&nbsp;Bai</span>
+    </div>
+  </div>
+
+  <!-- Fixed action buttons -->
+  <div class="hero__actions">
+    <a href="pages/contact.html" class="cta">
+      <span class="cta__label">
+        <span class="cta__text">Book now</span>
+        <span class="cta__text">Book now</span>
+      </span>
+      <span class="cta__icon cta__icon--arrow" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="6" y1="18" x2="18" y2="6"/>
+          <polyline points="9 6 18 6 18 15"/>
+        </svg>
+      </span>
+    </a>
+    <button type="button" class="cta menu-toggle" id="menuOpen" aria-controls="menuOverlay" aria-expanded="false">
+      <span class="cta__label">
+        <span class="cta__text">Menu</span>
+        <span class="cta__text">Menu</span>
+      </span>
+      <span class="cta__icon cta__icon--burger" aria-hidden="true">
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+  </div>
+
+  <!-- Full-screen overlay menu -->
+  <nav class="menu-overlay" id="menuOverlay" aria-hidden="true">
+    <div class="menu-overlay__bar">
+      <a href="index.html" class="brand brand--light">
+        <span class="brand-name">Jodha Bai</span>
+      </a>
+      <button type="button" class="btn btn-ghost btn-ghost--light menu-close" id="menuClose" aria-label="Close menu">
+        <span class="dot dot--light"></span>
+        <span>Close</span>
+      </button>
+    </div>
+
+    <div class="menu-overlay__inner">
+      <ol class="menu-list" role="list">
+        <li><a href="index.html" class="menu-link"><span class="menu-num">01</span><span class="menu-text">Home</span></a></li>
+        <li><a href="pages/events.html" class="menu-link"><span class="menu-num">02</span><span class="menu-text">Events</span></a></li>
+        <li><a href="pages/ourlovestory.html" class="menu-link"><span class="menu-num">03</span><span class="menu-text">Our Love Story</span></a></li>
+        <li><a href="pages/gallery.html" class="menu-link"><span class="menu-num">04</span><span class="menu-text">Gallery</span></a></li>
+        <li><a href="pages/contact.html" class="menu-link"><span class="menu-num">05</span><span class="menu-text">Contact</span></a></li>
+      </ol>
+
+      <div class="menu-foot">
+        <div class="menu-foot__col">
+          <span class="menu-foot__label">Find us</span>
+          <p>Terranora, NSW, AU<br/>Open year round</p>
+        </div>
+        <div class="menu-foot__col">
+          <span class="menu-foot__label">Follow</span>
+          <p><a href="https://www.instagram.com/jodhabairetreat/?hl=en" target="_blank" rel="noopener noreferrer">Instagram</a><br/><a href="https://www.facebook.com/JodhaBaiRetreat/" target="_blank" rel="noopener noreferrer">Facebook</a></p>
+        </div>
+        <div class="menu-foot__col">
+          <span class="menu-foot__label">Reach out</span>
+          <p><a href="mailto:bookings@jodhabairetreat.com">bookings@jodhabairetreat.com</a><br/>0416598937</p>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero__frame">
+      <img src="images/mainresidence/mainresidence1.webp" alt="" class="hero__bg" fetchpriority="high" decoding="async" />
+      <div class="hero__darken" aria-hidden="true"></div>
+      <div class="hero__vignette" aria-hidden="true"></div>
+
+      <div class="hero__bar">
+        <a href="#" class="hero__brand" aria-label="Jodha Bai home">
+          Jodha Bai
+        </a>
+      </div>
+
+      <div class="hero__locale">
+        <span class="hero__locale-dot"></span>
+        Located in Terranora
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Welcome — editorial intro with oversized initial and per-letter ink fill -->
+  <section class="intro" id="intro">
+    <div class="intro__inner">
+      <header class="intro__meta">
+        <span class="intro__tag">An Introduction</span>
+      </header>
+      <p class="intro__paragraph" id="introPara">Welcome to Jodha Bai, an iconic setting with stunning architecture and views: a private estate built exclusively for weddings, photo and film shoots, proposals and unforgettable private events.</p>
+      <footer class="intro__sign">
+        <span class="intro__sign-mark" aria-hidden="true">&#10038;</span>
+        <span class="intro__sign-text"><em>Jodha Bai</em>, Terranora, est. for the unforgettable</span>
+      </footer>
+    </div>
+  </section>
+
+    <!-- Zoom-out mosaic — starts as one full-frame image, then as the
+       user scrolls, the section pins and the image zooms out to reveal a
+       5x5 mosaic (one ring around the original centre). Fewer tiles than
+       before so each photo opens up bigger once zoomed out. Once fully
+       zoomed out the page resumes its normal vertical scroll. -->
+  <section class="zoom-mosaic" id="zoomMosaic" aria-label="Property mosaic">
+    <div class="zoom-mosaic__stage">
+      <div class="zoom-mosaic__frame-wrap">
+      <div class="zoom-mosaic__frame">
+        <div class="zoom-mosaic__grid">
+          <!-- Row 1 -->
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence1.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence5.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3585.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/lotus-suite-main-image-lounge-bed.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence17.webp" alt="" /></figure>
+          <!-- Row 2 -->
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/img-1511.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence9.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2315.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence20.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3608.webp" alt="" /></figure>
+          <!-- Row 3 — centre row -->
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3588.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite-bedroom.webp" alt="" /></figure>
+          <figure class="zm-cell zm-cell--center"><img src="images/mainresidence/mainresidence24.webp" alt="Jodha Bai" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3572.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2333.webp" alt="" /></figure>
+          <!-- Row 4 -->
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence24.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3581.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/lotus-suite-lounge-bedroom.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence8.webp" alt="" /></figure>
+          <!-- Row 5 -->
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite-lounge-dining-room.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3629.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence16.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2342.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence21.webp" alt="" /></figure>
+        </div>
+
+        <h2 class="zoom-mosaic__text" aria-label="Enjoy the Experience">
+          <span class="zoom-mosaic__line zoom-mosaic__line--1">Enjoy the</span>
+          <span class="zoom-mosaic__line zoom-mosaic__line--2">Experience</span>
+        </h2>
+      </div>
+
+      <!-- 5 Star badge — half overhanging the frame's bottom-left -->
+      <div class="zoom-mosaic__badge" aria-label="5 Star rated">
+        <span class="zoom-mosaic__badge-stars" aria-hidden="true">★★★★★</span>
+        <span class="zoom-mosaic__badge-label">5 Star</span>
+      </div>
+
+      </div><!-- /frame-wrap -->
+    </div>
+  </section>
+
+  <!-- The Occasions — editorial ledger of the three ways to take the
+       estate. Cream, hairline rules, oversized serif rows; hovering a
+       row floats a corner-marked photo that trails the cursor
+       (index.js). On mobile each row carries an inline image strip. -->
+  <section class="occasions" id="occasions" data-footer-trigger>
+    <div class="occasions__inner">
+      <header class="occasions__head">
+        <span class="occasions__tag">Reserved for Occasion</span>
+        <p class="occasions__lede">A 450 year old palace, rebuilt by hand on an Australian hillside, taken exclusively, one occasion at a time.</p>
+      </header>
+
+      <div class="occasions__list" id="occasionsList">
+        <a class="occasion" href="pages/events.html" data-preview="images/mainresidence/mainresidence5.webp">
+          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence5.webp" alt="" loading="lazy" /></span>
+          <span class="occasion__num">01</span>
+          <span class="occasion__title">Weddings <em>&amp; ceremonies</em></span>
+          <span class="occasion__side">
+            <span class="occasion__desc">Ceremonies and elopements among palace arches and mountain views.</span>
+            <span class="occasion__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="18" x2="18" y2="6"/>
+                <polyline points="9 6 18 6 18 15"/>
+              </svg>
+            </span>
+          </span>
+        </a>
+
+        <a class="occasion" href="pages/events.html" data-preview="images/mainresidence/mainresidence6.webp">
+          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence6.webp" alt="" loading="lazy" /></span>
+          <span class="occasion__num">02</span>
+          <span class="occasion__title">Shoots <em>photo &amp; film</em></span>
+          <span class="occasion__side">
+            <span class="occasion__desc">Editorial work, lookbooks, music videos and features: a set built for the camera.</span>
+            <span class="occasion__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="18" x2="18" y2="6"/>
+                <polyline points="9 6 18 6 18 15"/>
+              </svg>
+            </span>
+          </span>
+        </a>
+
+        <a class="occasion" href="pages/events.html" data-preview="images/mainresidence/mainresidence7.webp" data-preview-position="left center">
+          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence7.webp" alt="" loading="lazy" style="object-position: left center;" /></span>
+          <span class="occasion__num">03</span>
+          <span class="occasion__title">Milestones <em>&amp; proposals</em></span>
+          <span class="occasion__side">
+            <span class="occasion__desc">Proposals, anniversaries and private dinners, discreetly hosted.</span>
+            <span class="occasion__arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="6" y1="18" x2="18" y2="6"/>
+                <polyline points="9 6 18 6 18 15"/>
+              </svg>
+            </span>
+          </span>
+        </a>
+      </div>
+
+      <div class="occasions__cta">
+        <a href="pages/events.html" class="cta">
+          <span class="cta__label">
+            <span class="cta__text">Enquire about events</span>
+            <span class="cta__text">Enquire about events</span>
+          </span>
+          <span class="cta__icon cta__icon--arrow" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="6" y1="18" x2="18" y2="6"/>
+              <polyline points="9 6 18 6 18 15"/>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Cursor-trailing photo preview (desktop only, driven by index.js) -->
+    <div class="occasion-preview" id="occasionPreview" aria-hidden="true">
+      <img src="images/mainresidence/mainresidence13.webp" alt="" />
+      <span class="gallery__corner gallery__corner--tl"></span>
+      <span class="gallery__corner gallery__corner--tr"></span>
+      <span class="gallery__corner gallery__corner--bl"></span>
+      <span class="gallery__corner gallery__corner--br"></span>
+    </div>
+  </section>
+
+  <!-- The Residences — the estate's registered dwellings. Frames the
+       suites as five-star accommodation reserved alongside event hire,
+       supporting the property's NSW STRA registration. -->
+  <section class="residences" id="residences">
+    <div class="residences__inner">
+      <header class="residences__head">
+        <span class="residences__tag">The Residences</span>
+        <h2 class="residences__title">One estate, <em>three residences</em>.</h2>
+        <p class="residences__lede">Bridal parties dress in carved suites; families stay on after the last dance. Each residence is a registered short term rental, reserved alongside your event.</p>
+      </header>
+
+      <div class="residences__grid">
+        <figure class="residence" data-reveal>
+          <span class="residence__media">
+            <img src="images/mainresidence/mainresidence23.webp" alt="The Main Residence at Jodha Bai" loading="lazy" decoding="async" />
+          </span>
+          <figcaption class="residence__caption">
+            <span class="residence__name">The Main Residence</span>
+            <span class="residence__desc">The palace heart of the estate: grand halls, the piano room and verandahs over the valley.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="residence" data-reveal>
+          <span class="residence__media">
+            <img src="images/jodhabaisuite/img-1555.webp" alt="The Jodha Bai Suite" loading="lazy" decoding="async" />
+          </span>
+          <figcaption class="residence__caption">
+            <span class="residence__name">The Jodha Bai Suite</span>
+            <span class="residence__desc">Hand carved timber, stone and silence: the suite the estate is named for.</span>
+          </figcaption>
+        </figure>
+
+        <figure class="residence" data-reveal>
+          <span class="residence__media">
+            <img src="images/lotus/img-2315.webp" alt="The Lotus House at Jodha Bai" loading="lazy" decoding="async" />
+          </span>
+          <figcaption class="residence__caption">
+            <span class="residence__name">The Lotus House</span>
+            <span class="residence__desc">A private pavilion set apart in the gardens, with its own quiet rhythm.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <p class="residences__note">
+        <span class="residences__note-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        Five star rated stays, registered short term rental accommodation, NSW
+      </p>
+    </div>
+  </section>
+
+    <!-- Gallery — three connected photos. Hover one and it expands to
+       take ~2/3 of the row. Each photo carries four corner marks. -->
+  <section class="gallery" id="gallery">
+    <div class="gallery__inner">
+      <figure class="gallery__frame gallery__frame--a">
+        <img src="images/mainresidence/mainresidence21.webp" alt="Special Events" loading="lazy" decoding="async" />
+        <span class="gallery__corner gallery__corner--tl"></span>
+        <span class="gallery__corner gallery__corner--tr"></span>
+        <span class="gallery__corner gallery__corner--bl"></span>
+        <span class="gallery__corner gallery__corner--br"></span>
+        <span class="gallery__label">Special Events</span>
+      </figure>
+      <figure class="gallery__frame gallery__frame--b">
+        <img src="images/mainresidence/mainresidence5.webp" alt="Photoshoots" loading="lazy" decoding="async" />
+        <span class="gallery__corner gallery__corner--tl"></span>
+        <span class="gallery__corner gallery__corner--tr"></span>
+        <span class="gallery__corner gallery__corner--bl"></span>
+        <span class="gallery__corner gallery__corner--br"></span>
+        <span class="gallery__label">Photoshoots</span>
+      </figure>
+      <figure class="gallery__frame gallery__frame--c">
+        <img src="images/jodhabaisuite/img-1511.webp" alt="Day Spa" loading="lazy" decoding="async" />
+        <span class="gallery__corner gallery__corner--tl"></span>
+        <span class="gallery__corner gallery__corner--tr"></span>
+        <span class="gallery__corner gallery__corner--bl"></span>
+        <span class="gallery__corner gallery__corner--br"></span>
+        <span class="gallery__label">Day Spa</span>
+      </figure>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer-runway" aria-hidden="true"></div>
+
+  <footer class="site-footer" id="siteFooter">
+    <div class="site-footer__inner">
+      <div class="site-footer__top">
+        <span class="site-footer__locale">Terranora, AU</span>
+        <span class="site-footer__year">&copy; 2026</span>
+      </div>
+
+      <div class="site-footer__cols">
+        <div class="footer-col footer-col--lede">
+          <span class="footer-col__title">The Retreat</span>
+          <p class="footer-col__lede">A private estate set in the Terranora highlands, reserved exclusively for weddings, photo shoots and gatherings worth remembering.</p>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col__title">Discover</span>
+          <ul class="footer-col__list" role="list">
+            <li><a href="pages/events.html">Events</a></li>
+            <li><a href="pages/ourlovestory.html">Our Love Story</a></li>
+            <li><a href="pages/gallery.html">Gallery</a></li>
+            <li><a href="index.html#residences">The Residences</a></li>
+            <li><a href="index.html#gallery">Photoshoots</a></li>
+            <li><a href="index.html#gallery">Day spa</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <span class="footer-col__title">Reach out</span>
+          <ul class="footer-col__list" role="list">
+            <li><a href="mailto:bookings@jodhabairetreat.com">bookings@jodhabairetreat.com</a></li>
+            <li><a href="tel:0416598937">0416598937</a></li>
+            <li>Terranora, NSW, AU</li>
+            <li><a href="pages/contact.html">Contact us</a></li>
+          </ul>
+          <ul class="footer-social" role="list" aria-label="Social media">
+            <li>
+              <a href="https://www.instagram.com/jodhabairetreat/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="footer-social__link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="3" y="3" width="18" height="18" rx="5" ry="5"/>
+                  <circle cx="12" cy="12" r="4"/>
+                  <circle cx="17.4" cy="6.6" r="0.6" fill="currentColor"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/JodhaBaiRetreat/" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="footer-social__link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M14 4h-2.5A3.5 3.5 0 0 0 8 7.5V11H5.5v3H8v7h3v-7h2.5l.5-3H11V8a1 1 0 0 1 1-1h2V4z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="site-footer__legal">
+        <button type="button" class="legal-trigger" data-legal="privacy">Privacy</button>
+        <span aria-hidden="true">&middot;</span>
+        <button type="button" class="legal-trigger" data-legal="terms">Terms</button>
+        <span aria-hidden="true">&middot;</span>
+        <button type="button" class="legal-trigger" data-legal="house-rules">House Rules</button>
+      </div>
+
+      <h2 class="site-footer__brand">Jodha&nbsp;Bai</h2>
+    </div>
+
+  <div class="legal-modal" id="legalModal" aria-hidden="true" role="dialog"
+       aria-modal="true" aria-labelledby="legalModalHeading">
+    <div class="legal-modal__backdrop" id="legalBackdrop"></div>
+    <div class="legal-modal__panel">
+      <div class="legal-modal__tabs" role="tablist" aria-label="Legal documents">
+        <button class="legal-modal__tab" role="tab" aria-selected="true"
+                data-tab="privacy" aria-controls="lp-privacy" id="lt-privacy">Privacy</button>
+        <button class="legal-modal__tab" role="tab" aria-selected="false"
+                data-tab="terms" aria-controls="lp-terms" id="lt-terms">Terms</button>
+        <button class="legal-modal__tab" role="tab" aria-selected="false"
+                data-tab="house-rules" aria-controls="lp-house-rules" id="lt-house-rules">House Rules</button>
+        <span class="legal-modal__tab-ink" aria-hidden="true"></span>
+      </div>
+      <button class="legal-modal__close" id="legalModalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"
+             stroke-linecap="round" aria-hidden="true" width="20" height="20">
+          <line x1="5" y1="5" x2="19" y2="19"/>
+          <line x1="19" y1="5" x2="5" y2="19"/>
+        </svg>
+      </button>
+      <div class="legal-modal__body">
+        <div class="legal-modal__pane is-active" id="lp-privacy" role="tabpanel"
+             aria-labelledby="lt-privacy">
+          <h2 class="legal-modal__heading" id="legalModalHeading">Privacy Policy</h2>
+          <p class="legal-modal__text">Jodha Bai collects personal information, including your name, email address and phone number, only when you voluntarily submit an enquiry or make a booking through our website or via third party booking platforms. We do not sell, trade or otherwise transfer your personal information to outside parties.</p>
+          <p class="legal-modal__text">Information you provide is used solely to respond to your enquiry, process your booking and improve the guest experience. We may retain correspondence for up to 24 months to assist with future stays. All data is stored securely and access is restricted to retreat management only.</p>
+          <p class="legal-modal__text">You have the right to request access to, correction of, or deletion of any personal information we hold about you. To exercise this right, please contact us at <a href="mailto:bookings@jodhabairetreat.com">bookings@jodhabairetreat.com</a>. This policy is governed by the Privacy Act 1988 (Cth) and the Australian Privacy Principles.</p>
+        </div>
+        <div class="legal-modal__pane" id="lp-terms" role="tabpanel"
+             aria-labelledby="lt-terms" aria-hidden="true">
+          <h2 class="legal-modal__heading">Terms &amp; Conditions</h2>
+          <p class="legal-modal__text">All bookings at Jodha Bai are subject to availability and confirmed only upon receipt of full payment or deposit as specified at the time of booking. Rates are quoted in Australian dollars and include GST where applicable.</p>
+          <p class="legal-modal__text"><strong>Cancellations</strong> made more than 14 days before arrival will receive a full refund less any third party booking fees. Cancellations within 14 days of arrival are non refundable. We strongly recommend travel insurance. In the event the retreat is unable to honour a confirmed booking due to circumstances beyond our control, guests will receive a full refund or the option to rebook.</p>
+          <p class="legal-modal__text">Jodha Bai accepts no liability for loss, injury or damage to persons or property during your stay, except where required by law. These terms are governed by the laws of New South Wales, Australia. Any disputes shall be subject to the exclusive jurisdiction of the courts of NSW.</p>
+        </div>
+        <div class="legal-modal__pane" id="lp-house-rules" role="tabpanel"
+             aria-labelledby="lt-house-rules" aria-hidden="true">
+          <h2 class="legal-modal__heading">House Rules</h2>
+          <p class="legal-modal__text">To ensure an exceptional experience for all guests, we ask that you observe the following during your stay.</p>
+          <ul class="legal-modal__list">
+            <li>No smoking inside any building on the property. Designated outdoor areas are provided.</li>
+            <li>Please remove shoes before entering the suites. Slippers are provided for your comfort.</li>
+            <li>Quiet hours are observed between <strong>10 pm and 8 am</strong>; please be mindful of neighbouring guests and the natural environment.</li>
+            <li>The retreat accommodates the number of guests specified in your booking. Additional visitors require prior approval from management.</li>
+            <li>Pets are not permitted on the property unless expressly agreed upon at the time of booking.</li>
+            <li>Please treat the property, furnishings and grounds with care. Guests are responsible for any damage caused during their stay.</li>
+            <li>Check in is from 3 pm; check out is by 11 am. Early or late arrangements may be available on request.</li>
+          </ul>
+          <p class="legal-modal__text">We want your stay to feel like home: unhurried, warm and entirely your own. Thank you for helping us keep it that way.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </footer>
+
+  <script src="includes/header.js"></script>
+  <script src="index.js"></script>
+  <script src="includes/footer.js"></script>
+</body>
+</html>

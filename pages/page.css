@@ -1,0 +1,99 @@
+/* =========================================================
+   page.css — shared styles for all inner pages.
+   Loaded via <link rel="stylesheet" href="page.css" /> on
+   events, contact, and gallery pages.
+   ========================================================= */
+
+/* =========================================================
+   PAGE HERO — cream intro header at the top of each page
+   ========================================================= */
+.page-hero {
+  position: relative;
+  z-index: 2;
+  background: var(--cream);
+  /* Top padding clears the fixed CTAs (top: 56px + their own height ~46px)
+     with generous breathing room. Bottom padding transitions into page content. */
+  padding: 148px 8vw 100px;
+}
+
+.page-hero__inner {
+  max-width: 960px;
+}
+
+/* ---- Meta row: e.g. N° 02 ——— Events ---- */
+.page-hero__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 44px;
+}
+
+.page-hero__index {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.page-hero__rule {
+  width: 64px;
+  height: 1px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+.page-hero__tag {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ---- Title ---- */
+.page-hero__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(52px, 7.5vw, 116px);
+  line-height: 0.97;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  margin: 0 0 36px;
+}
+
+.page-hero__title em {
+  font-style: italic;
+}
+
+/* ---- Lede ---- */
+.page-hero__lede {
+  font-family: "Instrument Serif", "Fraunces", Georgia, serif;
+  font-weight: 400;
+  font-size: clamp(18px, 1.5vw, 22px);
+  line-height: 1.62;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 58ch;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media (max-width: 720px) {
+  .page-hero {
+    padding: 116px 24px 64px;
+  }
+
+  .page-hero__title {
+    font-size: clamp(42px, 12vw, 72px);
+  }
+
+  .page-hero__lede {
+    font-size: 18px;
+  }
+}
