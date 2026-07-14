@@ -742,7 +742,15 @@
   .zoom-mosaic__stage {
     position: relative;
     height: auto;
-    padding: 0;
+    /* The 5-star badge overhangs 18px below the frame-wrap by design
+       (see .zoom-mosaic__badge). On desktop the sticky 100vh stage has
+       plenty of spare room around the frame, but on mobile the stage
+       collapses to height:auto (hugging the frame-wrap exactly), so
+       without this padding the overhang poked out into the Occasions
+       section below — which paints on top (z-index 3 vs 2) and hid it
+       entirely. This reserves room so the badge stays inside the
+       section's own box. */
+    padding: 0 0 28px;
   }
   .zoom-mosaic__line {
     opacity: 1;
