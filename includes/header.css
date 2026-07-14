@@ -450,12 +450,17 @@ body.menu-open {
     padding: 16px 0;
   }
   .hero__actions {
-    /* On mobile the CTAs sit pinned to the bottom-right — opposite of desktop */
+    /* On mobile the CTAs sit side by side, centred along the bottom
+       edge — easy to spot and thumb-reachable, rather than tucked
+       into a corner. */
     top: auto;
-    bottom: 14px;
-    right: 14px;
-    gap: 6px;
-    flex-direction: column-reverse; /* keep Book now on top of Menu */
+    bottom: 16px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
   }
   /* Compact pill — noticeably smaller across the board on mobile. */
   .cta {
