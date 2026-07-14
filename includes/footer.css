@@ -140,15 +140,10 @@
 }
 
 .footer-social__link:hover {
-  /* Black smoked-glass, matching .cta, instead of inverting to white —
-     keeps every button on the site in the same dark family. The icon
-     stays light so it still reads clearly against the fill. */
-  background: linear-gradient(
-    135deg,
-    rgba(28, 29, 26, 0.88) 0%,
-    rgba(28, 29, 26, 0.72) 55%,
-    rgba(42, 42, 38, 0.85) 100%
-  );
+  /* Flat black, matching .cta, instead of inverting to white — keeps
+     every button on the site in the same dark family. The icon stays
+     light so it still reads clearly against the fill. */
+  background: var(--ink);
   color: var(--cream);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);

@@ -928,11 +928,8 @@
 }
 
 .occasion:hover .occasion__arrow {
-  background: linear-gradient(135deg, rgba(28, 29, 26, 0.85), rgba(28, 29, 26, 0.7));
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: var(--ink);
   border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25);
   color: var(--cream);
   transform: rotate(45deg);
 }

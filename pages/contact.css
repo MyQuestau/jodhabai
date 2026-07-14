@@ -366,21 +366,13 @@
 
 .cf-submit {
   position: relative;
-  overflow: hidden; /* clips the glass smudge */
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  /* Smoked mirror glass — dark sibling of the gold CTA pills */
-  background: linear-gradient(
-    135deg,
-    rgba(28, 29, 26, 0.88) 0%,
-    rgba(28, 29, 26, 0.72) 55%,
-    rgba(42, 42, 38, 0.85) 100%
-  );
-  backdrop-filter: blur(14px) saturate(1.3);
-  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  /* Flat black — dark sibling of the gold CTA pills */
+  background: var(--ink);
   color: var(--cream);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   padding: 14px 18px 14px 28px;
   font-family: var(--serif);
@@ -389,62 +381,16 @@
   font-size: clamp(18px, 1.6vw, 22px);
   cursor: pointer;
   white-space: nowrap;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -6px 12px rgba(0, 0, 0, 0.35),
-    0 10px 28px -12px rgba(0, 0, 0, 0.5);
-  transition: background 0.4s var(--ease), border-color 0.4s var(--ease),
+  box-shadow: 0 10px 28px -12px rgba(0, 0, 0, 0.5);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease),
               transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
 }
 
-/* Smudged highlight streak — sweeps on hover */
-.cf-submit::before {
-  content: "";
-  position: absolute;
-  top: -45%;
-  bottom: -45%;
-  left: 8%;
-  width: 30%;
-  background: linear-gradient(
-    105deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.22) 45%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  filter: blur(7px);
-  transform: skewX(-18deg);
-  pointer-events: none;
-  transition: transform 0.75s var(--ease);
-}
-
-.cf-submit:hover::before {
-  transform: skewX(-18deg) translateX(340%);
-}
-
-.cf-submit > * {
-  position: relative;
-  z-index: 1;
-}
-
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .cf-submit {
-    background: var(--ink);
-  }
-}
-
 .cf-submit:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(20, 21, 18, 0.94) 0%,
-    rgba(28, 29, 26, 0.8) 55%,
-    rgba(48, 48, 43, 0.9) 100%
-  );
+  background: #000;
   border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -6px 14px rgba(0, 0, 0, 0.4),
-    0 18px 44px -16px rgba(0, 0, 0, 0.55);
+  box-shadow: 0 18px 44px -16px rgba(0, 0, 0, 0.55);
 }
 
 .cf-submit__arrow {
@@ -651,8 +597,8 @@
 .ct-thanks.is-active .ct-thanks__countdown { opacity: 1; }
 
 .ct-thanks__home {
-  /* Black smoked-glass, matching .cta, instead of a faint cream ghost
-     pill — border/shadow carry the definition against the overlay's
+  /* Flat black, matching .cta, instead of a faint cream ghost pill —
+     border/shadow carry the definition against the overlay's
      near-black backdrop. */
   display: inline-flex;
   align-items: center;
@@ -665,17 +611,10 @@
   color: rgba(243, 237, 225, 0.75);
   text-decoration: none;
   padding: 12px 22px;
-  background: linear-gradient(
-    135deg,
-    rgba(28, 29, 26, 0.88) 0%,
-    rgba(28, 29, 26, 0.72) 55%,
-    rgba(42, 42, 38, 0.85) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--ink);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -6px 12px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.5);
   opacity: 0;
   transition: opacity 0.6s ease 1.2s, color 0.3s ease, border-color 0.3s ease, background 0.3s ease;
 }
@@ -685,12 +624,7 @@
 .ct-thanks__home:hover {
   color: var(--cream);
   border-color: rgba(255, 255, 255, 0.3);
-  background: linear-gradient(
-    135deg,
-    rgba(20, 21, 18, 0.94) 0%,
-    rgba(28, 29, 26, 0.8) 55%,
-    rgba(48, 48, 43, 0.9) 100%
-  );
+  background: #000;
 }
 
 /* =========================================================

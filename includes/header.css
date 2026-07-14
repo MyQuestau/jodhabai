@@ -104,29 +104,17 @@ h1.site-brand-h1 {
 }
 
 .btn-ghost--light {
-  /* Black smoked-glass, matching .cta, so every button on the site
-     shares the same family — border/shadow carry the definition
-     against the menu overlay's near-black backdrop. */
-  background: linear-gradient(
-    135deg,
-    rgba(28, 29, 26, 0.88) 0%,
-    rgba(28, 29, 26, 0.72) 55%,
-    rgba(42, 42, 38, 0.85) 100%
-  );
-  border-color: rgba(255, 255, 255, 0.18);
+  /* Flat black, matching .cta, so every button on the site shares
+     the same family — border/shadow carry the definition against
+     the menu overlay's near-black backdrop. */
+  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.16);
   color: var(--cream);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),
-    inset 0 -6px 12px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 6px 16px -10px rgba(0, 0, 0, 0.5);
 }
 
 .btn-ghost--light:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(20, 21, 18, 0.94) 0%,
-    rgba(28, 29, 26, 0.8) 55%,
-    rgba(48, 48, 43, 0.9) 100%
-  );
+  background: #000;
   border-color: rgba(255, 255, 255, 0.3);
 }
 
@@ -149,10 +137,9 @@ h1.site-brand-h1 {
 }
 
 /* ---------------------------------------------------------
-   CTA — mirrored-glass pills (the fixed Book now / Menu and
-   every Enquire button). Frosted backdrop blur with a black
-   tint, a smudged specular streak sitting on the surface,
-   and a shine that sweeps across on hover.
+   CTA — flat black pills (the fixed Book now / Menu and
+   every Enquire button). Solid ink fill, no gradient or
+   glass/shine effect.
    --------------------------------------------------------- */
 .cta {
   position: relative;
@@ -161,19 +148,9 @@ h1.site-brand-h1 {
   justify-content: space-between;
   gap: 10px;
   padding: 11px 11px 11px 22px;
-  overflow: hidden; /* clips the smudge + shine sweep to the pill */
-  /* Smoked mirror glass: translucent ink wash over a heavy
-     backdrop blur, so whatever sits behind smears through dark. */
-  background: linear-gradient(
-    135deg,
-    rgba(28, 29, 26, 0.88) 0%,
-    rgba(28, 29, 26, 0.72) 55%,
-    rgba(42, 42, 38, 0.85) 100%
-  );
-  backdrop-filter: blur(16px) saturate(1.6);
-  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  background: var(--ink);
   color: var(--cream);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 999px;
   font-family: var(--sans);
   font-size: 22px;
@@ -183,57 +160,11 @@ h1.site-brand-h1 {
   cursor: pointer;
   white-space: nowrap;
   text-decoration: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.22),      /* top glass edge */
-    inset 0 -8px 14px rgba(0, 0, 0, 0.35),        /* dark pooling at the base */
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.12),  /* hairline inner rim */
-    0 8px 26px -10px rgba(0, 0, 0, 0.45);
-  transition: background 0.4s var(--ease), border-color 0.4s var(--ease),
-    transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+  box-shadow: 0 8px 22px -12px rgba(0, 0, 0, 0.55);
+  transition: background 0.3s var(--ease), border-color 0.3s var(--ease),
+    transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-/* Smudged reflection — a soft diagonal streak resting on the glass,
-   like a thumb-smeared highlight. Sweeps across the pill on hover. */
-.cta::before {
-  content: "";
-  position: absolute;
-  top: -45%;
-  bottom: -45%;
-  left: 6%;
-  width: 34%;
-  background: linear-gradient(
-    105deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.55) 40%,
-    rgba(255, 255, 255, 0.18) 62%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  filter: blur(7px);
-  transform: skewX(-18deg);
-  pointer-events: none;
-  transition: transform 0.75s var(--ease), opacity 0.4s var(--ease);
-}
-
-/* Second, fainter smudge near the right edge for the mirrored read */
-.cta::after {
-  content: "";
-  position: absolute;
-  top: -40%;
-  bottom: -40%;
-  right: 4%;
-  width: 12%;
-  background: linear-gradient(
-    105deg,
-    rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  filter: blur(9px);
-  transform: skewX(-18deg);
-  pointer-events: none;
-}
-
-/* Keep the label and icon above the glass streaks */
 .cta__label,
 .cta__icon {
   position: relative;
@@ -241,41 +172,15 @@ h1.site-brand-h1 {
 }
 
 .cta:hover {
-  background: linear-gradient(
-    135deg,
-    rgba(20, 21, 18, 0.94) 0%,
-    rgba(28, 29, 26, 0.8) 55%,
-    rgba(48, 48, 43, 0.9) 100%
-  );
-  border-color: rgba(255, 255, 255, 0.3);
+  background: #000;
+  border-color: rgba(255, 255, 255, 0.32);
   transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.3),
-    inset 0 -8px 16px rgba(0, 0, 0, 0.4),
-    inset 0 0 0 0.5px rgba(255, 255, 255, 0.18),
-    0 16px 36px -14px rgba(0, 0, 0, 0.5);
-}
-
-/* Shine sweep — the smudge slides across the face of the pill */
-.cta:hover::before {
-  transform: skewX(-18deg) translateX(340%);
-}
-
-/* Fallback where backdrop-filter isn't supported: a soft but solid
-   gold-glass so text always sits on something. */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .cta {
-    background: var(--ink);
-  }
+  box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.6);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cta,
-  .cta::before {
+  .cta {
     transition: none;
-  }
-  .cta:hover::before {
-    transform: skewX(-18deg);
   }
 }
 
@@ -614,9 +519,7 @@ body.menu-open {
   width: 48px;
   height: 48px;
   border-radius: 50%;
-  background: rgba(28, 29, 26, 0.72);
-  backdrop-filter: blur(12px) saturate(1.3);
-  -webkit-backdrop-filter: blur(12px) saturate(1.3);
+  background: var(--ink);
   color: var(--cream);
   border: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
@@ -627,9 +530,7 @@ body.menu-open {
   transform: translateY(10px);
   transition: opacity 0.45s ease, transform 0.45s ease, background 0.3s ease;
   pointer-events: none;
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.2),
-    0 4px 20px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.28);
 }
 
 .back-to-top.is-visible {
@@ -639,7 +540,7 @@ body.menu-open {
 }
 
 .back-to-top:hover {
-  background: rgba(42, 42, 38, 0.85);
+  background: #000;
   transform: translateY(-3px);
   box-shadow: 0 8px 28px rgba(0, 0, 0, 0.32);
 }
