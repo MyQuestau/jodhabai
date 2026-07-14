@@ -6,31 +6,6 @@
 /* =========================================================
    NAVIGATION
    ========================================================= */
-/* In-frame top bar (sits over the hero image) */
-.hero__bar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 3;
-  padding: 28px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.hero__brand {
-  font-family: var(--serif);
-  font-style: italic;
-  font-weight: 400;
-  font-size: clamp(84px, 9.2vw, 128px);
-  letter-spacing: -0.015em;
-  color: #fff;
-  line-height: 1;
-  text-shadow: 0 2px 28px rgba(0, 0, 0, 0.45);
-}
-
 /* Header (fixed CTAs, menu overlay, .cta, .btn, .brand) lives in
    includes/header.css and is loaded as a separate stylesheet. */
 
@@ -600,7 +575,10 @@
   border-radius: 56px;
 }
 
-/* 5 Star badge — half overhanging the bottom-left of the frame */
+/* Google reviews badge — half overhanging the bottom-left of the
+   frame, styled to read as a recognizable Google review (the brand's
+   own "G" mark + numeric rating + stars) since it now links out to
+   the real reviews. */
 .zoom-mosaic__badge {
   position: absolute;
   bottom: -20px;
@@ -608,28 +586,39 @@
   z-index: 20;
   display: inline-flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   background: var(--cream);
   border-radius: 999px;
   padding: 10px 20px 10px 16px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.14), 0 1px 4px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
+}
+
+.zoom-mosaic__badge:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.zoom-mosaic__badge-g {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.zoom-mosaic__badge-rating {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
 }
 
 .zoom-mosaic__badge-stars {
   font-size: 13px;
-  letter-spacing: 2px;
-  color: var(--accent);
+  letter-spacing: 1px;
+  color: #f5b400;
   line-height: 1;
-}
-
-.zoom-mosaic__badge-label {
-  font-family: var(--sans);
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--ink);
-  white-space: nowrap;
 }
 
 /* Grid intrinsic size = 5x the frame in each axis so at scale 1
@@ -767,10 +756,11 @@
     left: 22px;
     bottom: -18px;
     padding: 8px 16px 8px 13px;
-    gap: 7px;
+    gap: 6px;
   }
+  .zoom-mosaic__badge-g { width: 15px; height: 15px; }
+  .zoom-mosaic__badge-rating { font-size: 11px; }
   .zoom-mosaic__badge-stars { font-size: 11px; }
-  .zoom-mosaic__badge-label { font-size: 10px; }
   .zoom-mosaic__grid {
     column-gap: 14px;
     row-gap: 12px;
@@ -1087,12 +1077,6 @@
         rgba(0, 0, 0, 0.22) 100%
       );
   }
-  .hero__bar {
-    padding: 16px 16px;
-    gap: 12px;
-    align-items: flex-start;
-    flex-direction: column;
-  }
   .hero__locale {
     /* Raised so it doesn't get clipped by the rounded bottom edge or
        the new tighter hero padding. Slightly smaller so it fits on
@@ -1306,111 +1290,30 @@
 }
 
 /* ---------------------------------------------------------
-   SPLASH LOADER SMOKE — billowing smoke behind the welcome
-   text. Built from JS-populated blobs (index.js) so their
-   position/timing can be randomised per page load; this file
-   only defines the shapes and motion.
+   SPLASH LOADER FLOURISH — a single drawn line beneath the
+   wordmark. index.js drives the whole draw-on reveal inline
+   (dasharray/dashoffset/transition set from the path's real
+   getTotalLength()) at the same moment it fades the text in,
+   so the line extends in step with the name appearing rather
+   than trailing after it. Nothing here sets dash values —
+   without JS (or under reduced motion) the path is just a
+   plain, fully visible stroke.
    --------------------------------------------------------- */
-.loader-smoke {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
+.loader__mark {
+  font-size: 18px;
+  color: rgba(243, 237, 225, 0.45);
 }
 
-.smoke-mass {
-  position: absolute;
-  inset: -25% -10% -10%;
-  filter: url(#loaderSmokeWarp);
+.loader__flourish {
+  width: min(72vw, 640px);
+  height: auto;
+  overflow: visible;
+  margin-top: 4px;
 }
 
-.smoke-back,
-.smoke-fore {
-  position: absolute;
-  inset: 0;
-}
-.smoke-fore { mix-blend-mode: screen; }
-.smoke-back { mix-blend-mode: screen; opacity: 0.85; }
-
-.smoke-blob {
-  position: absolute;
-  background: radial-gradient(
-    closest-side,
-    rgba(232, 228, 220, 0.95) 0%,
-    rgba(205, 201, 195, 0.55) 38%,
-    rgba(180, 178, 175, 0.22) 68%,
-    rgba(180, 178, 175, 0) 100%
-  );
-  opacity: 0;
-  will-change: transform, opacity;
-  animation-name: smokeRise;
-  animation-timing-function: var(--ease);
-  animation-duration: var(--dur, 5.5s);
-  animation-delay: var(--delay, 0s);
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-.smoke-blob.is-ember {
-  background: radial-gradient(
-    closest-side,
-    rgba(233, 205, 160, 0.9) 0%,
-    rgba(201, 154, 91, 0.5) 40%,
-    rgba(201, 154, 91, 0.15) 70%,
-    rgba(201, 154, 91, 0) 100%
-  );
-}
-
-/* Rise with wobble — smoke rarely goes straight up; it sways as it
-   climbs and thins, so the horizontal offset changes sign a few
-   times across the lifetime rather than moving in one direction. */
-@keyframes smokeRise {
-  0%   { opacity: 0;            transform: translate(0, 70px)                      scale(0.55) rotate(0deg); }
-  14%  { opacity: var(--peak, 0.6); }
-  32%  { transform: translate(calc(var(--x) * 0.35), 10px)   scale(0.8)  rotate(4deg); }
-  50%  { opacity: var(--peak, 0.6); transform: translate(calc(var(--x) * -0.25), -70px) scale(1.05) rotate(-3deg); }
-  72%  { opacity: calc(var(--peak, 0.6) * 0.75); transform: translate(calc(var(--x) * 0.7), -150px) scale(1.3) rotate(3deg); }
-  100% { opacity: 0;            transform: translate(var(--x), -260px)             scale(1.7) rotate(-2deg); }
-}
-
-/* Fine grain overlay — a second, faster turbulence pass for visible
-   wisp texture on top of the warped mass. */
-.smoke-texture {
-  position: absolute;
-  inset: -12%;
-  filter: url(#loaderSmokeGrain);
-  mix-blend-mode: screen;
-  opacity: 0;
-  animation: smokeTextureFadeIn 1.6s var(--ease) var(--delay, 0s) 1 both;
-  pointer-events: none;
-}
-
-@keyframes smokeTextureFadeIn {
-  0%   { opacity: 0; }
-  100% { opacity: var(--peak, 0.4); }
-}
-
-/* Embers — small rising sparks for a lit-incense feel. */
-.ember-spark {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, #ffe3b3 0%, #c99a5b 55%, transparent 100%);
-  box-shadow: 0 0 6px 1px rgba(201, 154, 91, 0.8);
-  opacity: 0;
-  animation-name: sparkRise;
-  animation-timing-function: ease-out;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-}
-
-@keyframes sparkRise {
-  0%   { opacity: 0; transform: translate(0, 0) scale(1); }
-  8%   { opacity: 1; }
-  70%  { opacity: 0.8; }
-  100% { opacity: 0; transform: translate(var(--x), -340px) scale(0.3); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .loader-smoke { display: none; }
+.loader__flourish path {
+  fill: none;
+  stroke: rgba(243, 237, 225, 0.65);
+  stroke-width: 1.4;
+  stroke-linecap: round;
 }

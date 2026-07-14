@@ -10,19 +10,6 @@
 
   const inner = gallery.querySelector(".snake-gallery__inner");
 
-  // Shuffle the grid order on every load so the gallery feels different
-  // each visit. Every cell starts at opacity:0 until revealed, so this
-  // reorder happens before anything is visible — no flash of the
-  // original sequence.
-  if (inner) {
-    const shuffled = Array.from(inner.children);
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    shuffled.forEach((cell) => inner.appendChild(cell));
-  }
-
   const cells = gallery.querySelectorAll(".snake-cell");
   if (!cells.length) return;
 

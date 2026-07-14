@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,6 +16,9 @@
   <meta property="og:locale" content="en_AU" />
   <meta property="og:image:alt" content="The Jodha Bai palace residence in the Terranora hills" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Jodha Bai: A Private Palace Estate, Terranora" />
+  <meta name="twitter:description" content="Jodha Bai is a private palace estate in Terranora, NSW, reserved exclusively for weddings, photo and film shoots, proposals and unforgettable private events." />
+  <meta name="twitter:image" content="https://jodhabairetreat.com/images/mainresidence/mainresidence1.webp" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,7 +41,7 @@
     ]
   }
   </script>
-  <title>Jodha Bai</title>
+  <title>Jodha Bai: A Private Palace Estate, Terranora</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -53,50 +56,32 @@
 <body>
   <!-- Splash loader — index.js removes this after ~3 s -->
   <div id="page-loader" aria-hidden="true">
-    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
-      <!-- Warps the whole smoke mass so blob edges tear into irregular,
-           roiling cloud shapes instead of staying circular. -->
-      <filter id="loaderSmokeWarp" x="-40%" y="-40%" width="180%" height="180%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.010 0.022" numOctaves="4" seed="11" result="warpNoise">
-          <animate attributeName="baseFrequency" values="0.009 0.020;0.013 0.026;0.009 0.020" dur="14s" repeatCount="indefinite" />
-        </feTurbulence>
-        <feDisplacementMap in="SourceGraphic" in2="warpNoise" scale="70" xChannelSelector="R" yChannelSelector="G" />
-      </filter>
-      <!-- Faster, finer noise laid on top as a screen-blended grain
-           layer for visible wisp detail. -->
-      <filter id="loaderSmokeGrain" x="-20%" y="-20%" width="140%" height="140%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="3" seed="4" result="grain">
-          <animate attributeName="baseFrequency" values="0.026;0.038;0.026" dur="9s" repeatCount="indefinite" />
-        </feTurbulence>
-        <feColorMatrix in="grain" type="matrix"
-          values="0 0 0 0 0.93
-                  0 0 0 0 0.91
-                  0 0 0 0 0.85
-                  0 0 0 0.5 0" />
-      </filter>
-    </svg>
-
-    <div class="loader-smoke" id="loaderSmoke" aria-hidden="true">
-      <div class="smoke-mass">
-        <div class="smoke-back" id="loaderSmokeBack"></div>
-        <div class="smoke-fore" id="loaderSmokeFore"></div>
-      </div>
-      <div id="loaderSparkLayer"></div>
-      <div id="loaderTextureHolder"></div>
-    </div>
-
     <div class="loader__inner">
+      <span class="loader__mark" aria-hidden="true">&#10038;</span>
       <span class="loader__welcome">Welcome to</span>
       <span class="loader__name">Jodha&nbsp;Bai</span>
+      <svg class="loader__flourish" viewBox="0 0 460 34" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <path d="M 5 6 C 120 6 150 26 230 26 C 310 26 340 6 455 6" />
+      </svg>
     </div>
   </div>
+
+  <!-- Persistent top-left home link — the page's h1 on the homepage -->
+  <h1 class="site-brand-h1">
+    <a href="index.html" class="cta site-brand" aria-label="Jodha Bai home">
+      <span class="cta__label">
+        <span class="cta__text">Jodha Bai</span>
+        <span class="cta__text" aria-hidden="true">Jodha Bai</span>
+      </span>
+    </a>
+  </h1>
 
   <!-- Fixed action buttons -->
   <div class="hero__actions">
     <a href="pages/contact.html" class="cta">
       <span class="cta__label">
         <span class="cta__text">Book now</span>
-        <span class="cta__text">Book now</span>
+        <span class="cta__text" aria-hidden="true">Book now</span>
       </span>
       <span class="cta__icon cta__icon--arrow" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -108,7 +93,7 @@
     <button type="button" class="cta menu-toggle" id="menuOpen" aria-controls="menuOverlay" aria-expanded="false">
       <span class="cta__label">
         <span class="cta__text">Menu</span>
-        <span class="cta__text">Menu</span>
+        <span class="cta__text" aria-hidden="true">Menu</span>
       </span>
       <span class="cta__icon cta__icon--burger" aria-hidden="true">
         <span></span>
@@ -158,15 +143,9 @@
   <!-- Hero -->
   <section class="hero">
     <div class="hero__frame">
-      <img src="images/mainresidence/mainresidence1.webp" alt="" class="hero__bg" fetchpriority="high" decoding="async" />
+      <img src="images/mainresidence/mainresidence1.webp" srcset="images/mainresidence/mainresidence1-640w.webp 640w, images/mainresidence/mainresidence1-1200w.webp 1200w, images/mainresidence/mainresidence1.webp 2000w" sizes="100vw" alt="" class="hero__bg" fetchpriority="high" decoding="async" />
       <div class="hero__darken" aria-hidden="true"></div>
       <div class="hero__vignette" aria-hidden="true"></div>
-
-      <div class="hero__bar">
-        <a href="#" class="hero__brand" aria-label="Jodha Bai home">
-          Jodha Bai
-        </a>
-      </div>
 
       <div class="hero__locale">
         <span class="hero__locale-dot"></span>
@@ -201,35 +180,35 @@
       <div class="zoom-mosaic__frame">
         <div class="zoom-mosaic__grid">
           <!-- Row 1 -->
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence1.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence5.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3585.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/lotus-suite-main-image-lounge-bed.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence17.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence1.webp" srcset="images/mainresidence/mainresidence1-640w.webp 640w, images/mainresidence/mainresidence1-1200w.webp 1200w, images/mainresidence/mainresidence1.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence5.webp" srcset="images/mainresidence/mainresidence5-640w.webp 640w, images/mainresidence/mainresidence5-1200w.webp 1200w, images/mainresidence/mainresidence5.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3585.webp" srcset="images/garden/img-3585-640w.webp 640w, images/garden/img-3585-1200w.webp 1200w, images/garden/img-3585.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/lotus-suite-main-image-lounge-bed.webp" srcset="images/lotus/lotus-suite-main-image-lounge-bed-640w.webp 640w, images/lotus/lotus-suite-main-image-lounge-bed-1200w.webp 1200w, images/lotus/lotus-suite-main-image-lounge-bed.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence17.webp" srcset="images/mainresidence/mainresidence17-640w.webp 640w, images/mainresidence/mainresidence17-1200w.webp 1200w, images/mainresidence/mainresidence17.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
           <!-- Row 2 -->
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/img-1511.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence9.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2315.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence20.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3608.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/img-1511.webp" srcset="images/jodhabaisuite/img-1511-640w.webp 640w, images/jodhabaisuite/img-1511-1200w.webp 1200w, images/jodhabaisuite/img-1511.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence9.webp" srcset="images/mainresidence/mainresidence9-640w.webp 640w, images/mainresidence/mainresidence9-1200w.webp 1200w, images/mainresidence/mainresidence9.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2315.webp" srcset="images/lotus/img-2315-640w.webp 640w, images/lotus/img-2315-1200w.webp 1200w, images/lotus/img-2315.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence20.webp" srcset="images/mainresidence/mainresidence20-640w.webp 640w, images/mainresidence/mainresidence20-1200w.webp 1200w, images/mainresidence/mainresidence20.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3608.webp" srcset="images/garden/img-3608-640w.webp 640w, images/garden/img-3608-1200w.webp 1200w, images/garden/img-3608.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
           <!-- Row 3 — centre row -->
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3588.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite-bedroom.webp" alt="" /></figure>
-          <figure class="zm-cell zm-cell--center"><img src="images/mainresidence/mainresidence24.webp" alt="Jodha Bai" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3572.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2333.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3588.webp" srcset="images/garden/img-3588-640w.webp 640w, images/garden/img-3588-1200w.webp 1200w, images/garden/img-3588.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite-bedroom.webp" srcset="images/jodhabaisuite/jodha-bai-suite-bedroom-640w.webp 640w, images/jodhabaisuite/jodha-bai-suite-bedroom-1200w.webp 1200w, images/jodhabaisuite/jodha-bai-suite-bedroom.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell zm-cell--center"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence24.webp" srcset="images/mainresidence/mainresidence24-640w.webp 640w, images/mainresidence/mainresidence24-1200w.webp 1200w, images/mainresidence/mainresidence24.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="Jodha Bai" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3572.webp" srcset="images/garden/img-3572-640w.webp 640w, images/garden/img-3572-1200w.webp 1200w, images/garden/img-3572.webp 1500w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2333.webp" srcset="images/lotus/img-2333-640w.webp 640w, images/lotus/img-2333-1200w.webp 1200w, images/lotus/img-2333.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
           <!-- Row 4 -->
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence24.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3581.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/lotus-suite-lounge-bedroom.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence8.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence24.webp" srcset="images/mainresidence/mainresidence24-640w.webp 640w, images/mainresidence/mainresidence24-1200w.webp 1200w, images/mainresidence/mainresidence24.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite.webp" srcset="images/jodhabaisuite/jodha-bai-suite-640w.webp 640w, images/jodhabaisuite/jodha-bai-suite-1200w.webp 1200w, images/jodhabaisuite/jodha-bai-suite.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3581.webp" srcset="images/garden/img-3581-640w.webp 640w, images/garden/img-3581-1200w.webp 1200w, images/garden/img-3581.webp 1500w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/lotus-suite-lounge-bedroom.webp" srcset="images/lotus/lotus-suite-lounge-bedroom-640w.webp 640w, images/lotus/lotus-suite-lounge-bedroom-1200w.webp 1200w, images/lotus/lotus-suite-lounge-bedroom.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence8.webp" srcset="images/mainresidence/mainresidence8-640w.webp 640w, images/mainresidence/mainresidence8-1200w.webp 1200w, images/mainresidence/mainresidence8.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
           <!-- Row 5 -->
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite-lounge-dining-room.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3629.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence16.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2342.webp" alt="" /></figure>
-          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence21.webp" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/jodhabaisuite/jodha-bai-suite-lounge-dining-room.webp" srcset="images/jodhabaisuite/jodha-bai-suite-lounge-dining-room-640w.webp 640w, images/jodhabaisuite/jodha-bai-suite-lounge-dining-room-1200w.webp 1200w, images/jodhabaisuite/jodha-bai-suite-lounge-dining-room.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/garden/img-3629.webp" srcset="images/garden/img-3629-640w.webp 640w, images/garden/img-3629-1200w.webp 1200w, images/garden/img-3629.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence16.webp" srcset="images/mainresidence/mainresidence16-640w.webp 640w, images/mainresidence/mainresidence16-1200w.webp 1200w, images/mainresidence/mainresidence16.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/lotus/img-2342.webp" srcset="images/lotus/img-2342-640w.webp 640w, images/lotus/img-2342-1200w.webp 1200w, images/lotus/img-2342.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
+          <figure class="zm-cell"><img loading="lazy" decoding="async" src="images/mainresidence/mainresidence21.webp" srcset="images/mainresidence/mainresidence21-640w.webp 640w, images/mainresidence/mainresidence21-1200w.webp 1200w, images/mainresidence/mainresidence21.webp 2000w" sizes="(max-width: 720px) 90vw, 1200px" alt="" /></figure>
         </div>
 
         <h2 class="zoom-mosaic__text" aria-label="Enjoy the Experience">
@@ -238,11 +217,23 @@
         </h2>
       </div>
 
-      <!-- 5 Star badge — half overhanging the frame's bottom-left -->
-      <div class="zoom-mosaic__badge" aria-label="5 Star rated">
+      <!-- Google reviews badge — half overhanging the frame's bottom-left -->
+      <a
+        href="https://www.google.com/travel/search?q=jodha%20bai%20retreat&g2lb=4965990%2C72471280%2C72560029%2C72573224%2C72647020%2C72686036%2C72803964%2C72882230%2C73064764%2C121738282%2C121762713&hl=en-AU&gl=au&cs=1&ssta=1&ts=CAEaRwopEicyJTB4NmI5MGZlYzE5NzFkOWY0NzoweDhhZjIyYTIzZGE0MTM2M2MSGhIUCgcI6g8QBxgOEgcI6g8QBxgPGAEyAhAA&qs=CAEyFENnc0l2T3lFMHIzRWl2bUtBUkFCOAJCCQk8NkHaIyryikIJCTw2QdojKvKK&ap=ugEHcmV2aWV3cw&ictx=111&ved=0CAAQ5JsGahcKEwiYs_O11NGVAxUAAAAAHQAAAAAQDQ"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="zoom-mosaic__badge"
+        aria-label="Read our 5 star reviews on Google (opens in a new tab)"
+      >
+        <svg class="zoom-mosaic__badge-g" viewBox="0 0 18 18" aria-hidden="true">
+          <path fill="#4285F4" d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z"/>
+          <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332C2.438 15.983 5.482 18 9 18z"/>
+          <path fill="#FBBC05" d="M3.964 10.71c-.18-.54-.282-1.117-.282-1.71s.102-1.17.282-1.71V4.958H.957C.347 6.173 0 7.548 0 9s.348 2.827.957 4.042l3.007-2.332z"/>
+          <path fill="#EA4335" d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 7.29C4.672 5.163 6.656 3.58 9 3.58z"/>
+        </svg>
+        <span class="zoom-mosaic__badge-rating">5.0</span>
         <span class="zoom-mosaic__badge-stars" aria-hidden="true">★★★★★</span>
-        <span class="zoom-mosaic__badge-label">5 Star</span>
-      </div>
+      </a>
 
       </div><!-- /frame-wrap -->
     </div>
@@ -261,7 +252,7 @@
 
       <div class="occasions__list" id="occasionsList">
         <a class="occasion" href="pages/events.html" data-preview="images/mainresidence/mainresidence5.webp">
-          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence5.webp" alt="" loading="lazy" /></span>
+          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence5.webp" srcset="images/mainresidence/mainresidence5-640w.webp 640w, images/mainresidence/mainresidence5-1200w.webp 1200w, images/mainresidence/mainresidence5.webp 2000w" sizes="100vw" alt="" loading="lazy" decoding="async" /></span>
           <span class="occasion__num">01</span>
           <span class="occasion__title">Weddings <em>&amp; ceremonies</em></span>
           <span class="occasion__side">
@@ -276,7 +267,7 @@
         </a>
 
         <a class="occasion" href="pages/events.html" data-preview="images/mainresidence/mainresidence6.webp">
-          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence6.webp" alt="" loading="lazy" /></span>
+          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence6.webp" srcset="images/mainresidence/mainresidence6-640w.webp 640w, images/mainresidence/mainresidence6-1200w.webp 1200w, images/mainresidence/mainresidence6.webp 2000w" sizes="100vw" alt="" loading="lazy" decoding="async" /></span>
           <span class="occasion__num">02</span>
           <span class="occasion__title">Shoots <em>photo &amp; film</em></span>
           <span class="occasion__side">
@@ -291,7 +282,7 @@
         </a>
 
         <a class="occasion" href="pages/events.html" data-preview="images/mainresidence/mainresidence7.webp" data-preview-position="left center">
-          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence7.webp" alt="" loading="lazy" style="object-position: left center;" /></span>
+          <span class="occasion__thumb" aria-hidden="true"><img src="images/mainresidence/mainresidence7.webp" srcset="images/mainresidence/mainresidence7-640w.webp 640w, images/mainresidence/mainresidence7-1200w.webp 1200w, images/mainresidence/mainresidence7.webp 2000w" sizes="100vw" alt="" loading="lazy" decoding="async" style="object-position: left center;" /></span>
           <span class="occasion__num">03</span>
           <span class="occasion__title">Milestones <em>&amp; proposals</em></span>
           <span class="occasion__side">
@@ -310,7 +301,7 @@
         <a href="pages/events.html" class="cta">
           <span class="cta__label">
             <span class="cta__text">Enquire about events</span>
-            <span class="cta__text">Enquire about events</span>
+            <span class="cta__text" aria-hidden="true">Enquire about events</span>
           </span>
           <span class="cta__icon cta__icon--arrow" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
@@ -324,7 +315,7 @@
 
     <!-- Cursor-trailing photo preview (desktop only, driven by index.js) -->
     <div class="occasion-preview" id="occasionPreview" aria-hidden="true">
-      <img src="images/mainresidence/mainresidence13.webp" alt="" />
+      <img src="images/mainresidence/mainresidence13.webp" alt="" loading="lazy" decoding="async" />
       <span class="gallery__corner gallery__corner--tl"></span>
       <span class="gallery__corner gallery__corner--tr"></span>
       <span class="gallery__corner gallery__corner--bl"></span>
@@ -346,7 +337,7 @@
       <div class="residences__grid">
         <figure class="residence" data-reveal>
           <span class="residence__media">
-            <img src="images/mainresidence/mainresidence23.webp" alt="The Main Residence at Jodha Bai" loading="lazy" decoding="async" />
+            <img src="images/mainresidence/mainresidence23.webp" srcset="images/mainresidence/mainresidence23-640w.webp 640w, images/mainresidence/mainresidence23-1200w.webp 1200w, images/mainresidence/mainresidence23.webp 2000w" sizes="(max-width: 720px) 100vw, 33vw" alt="The Main Residence at Jodha Bai" loading="lazy" decoding="async" />
           </span>
           <figcaption class="residence__caption">
             <span class="residence__name">The Main Residence</span>
@@ -356,7 +347,7 @@
 
         <figure class="residence" data-reveal>
           <span class="residence__media">
-            <img src="images/jodhabaisuite/img-1555.webp" alt="The Jodha Bai Suite" loading="lazy" decoding="async" />
+            <img src="images/jodhabaisuite/img-1555.webp" srcset="images/jodhabaisuite/img-1555-640w.webp 640w, images/jodhabaisuite/img-1555-1200w.webp 1200w, images/jodhabaisuite/img-1555.webp 2000w" sizes="(max-width: 720px) 100vw, 33vw" alt="The Jodha Bai Suite" loading="lazy" decoding="async" />
           </span>
           <figcaption class="residence__caption">
             <span class="residence__name">The Jodha Bai Suite</span>
@@ -366,7 +357,7 @@
 
         <figure class="residence" data-reveal>
           <span class="residence__media">
-            <img src="images/lotus/img-2315.webp" alt="The Lotus House at Jodha Bai" loading="lazy" decoding="async" />
+            <img src="images/lotus/img-2315.webp" srcset="images/lotus/img-2315-640w.webp 640w, images/lotus/img-2315-1200w.webp 1200w, images/lotus/img-2315.webp 2000w" sizes="(max-width: 720px) 100vw, 33vw" alt="The Lotus House at Jodha Bai" loading="lazy" decoding="async" />
           </span>
           <figcaption class="residence__caption">
             <span class="residence__name">The Lotus House</span>
@@ -387,7 +378,7 @@
   <section class="gallery" id="gallery">
     <div class="gallery__inner">
       <figure class="gallery__frame gallery__frame--a">
-        <img src="images/mainresidence/mainresidence21.webp" alt="Special Events" loading="lazy" decoding="async" />
+        <img src="images/mainresidence/mainresidence21.webp" srcset="images/mainresidence/mainresidence21-640w.webp 640w, images/mainresidence/mainresidence21-1200w.webp 1200w, images/mainresidence/mainresidence21.webp 2000w" sizes="(max-width: 720px) 100vw, 50vw" alt="Special Events" loading="lazy" decoding="async" />
         <span class="gallery__corner gallery__corner--tl"></span>
         <span class="gallery__corner gallery__corner--tr"></span>
         <span class="gallery__corner gallery__corner--bl"></span>
@@ -395,7 +386,7 @@
         <span class="gallery__label">Special Events</span>
       </figure>
       <figure class="gallery__frame gallery__frame--b">
-        <img src="images/mainresidence/mainresidence5.webp" alt="Photoshoots" loading="lazy" decoding="async" />
+        <img src="images/mainresidence/mainresidence5.webp" srcset="images/mainresidence/mainresidence5-640w.webp 640w, images/mainresidence/mainresidence5-1200w.webp 1200w, images/mainresidence/mainresidence5.webp 2000w" sizes="(max-width: 720px) 100vw, 50vw" alt="Photoshoots" loading="lazy" decoding="async" />
         <span class="gallery__corner gallery__corner--tl"></span>
         <span class="gallery__corner gallery__corner--tr"></span>
         <span class="gallery__corner gallery__corner--bl"></span>
@@ -403,7 +394,7 @@
         <span class="gallery__label">Photoshoots</span>
       </figure>
       <figure class="gallery__frame gallery__frame--c">
-        <img src="images/jodhabaisuite/img-1511.webp" alt="Day Spa" loading="lazy" decoding="async" />
+        <img src="images/jodhabaisuite/img-1511.webp" srcset="images/jodhabaisuite/img-1511-640w.webp 640w, images/jodhabaisuite/img-1511-1200w.webp 1200w, images/jodhabaisuite/img-1511.webp 2000w" sizes="(max-width: 720px) 100vw, 50vw" alt="Day Spa" loading="lazy" decoding="async" />
         <span class="gallery__corner gallery__corner--tl"></span>
         <span class="gallery__corner gallery__corner--tr"></span>
         <span class="gallery__corner gallery__corner--bl"></span>

@@ -8,9 +8,27 @@
   document.body.style.overflow = "hidden";
   const inner = loader.querySelector(".loader__inner");
 
-  // Step 1 — text fades in
+  // Give the flourish line its real path length so it can be hidden by
+  // dash offset, then drawn on at the same moment the text fades in.
+  // Set up (hidden state) and the later reveal are both driven from
+  // here in JS, inline, rather than via a CSS class — an inline style
+  // always wins over a stylesheet rule, so mixing the two would let
+  // this setup silently block the reveal from ever taking effect.
+  const flourishPath = loader.querySelector(".loader__flourish path");
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (flourishPath && !reduceMotion) {
+    const length = flourishPath.getTotalLength();
+    flourishPath.style.transition = "none";
+    flourishPath.style.strokeDasharray = length;
+    flourishPath.style.strokeDashoffset = length;
+    flourishPath.getBoundingClientRect(); // force a reflow so the hidden state above is the transition's "from" frame
+    flourishPath.style.transition = "stroke-dashoffset 1.1s var(--ease)";
+  }
+
+  // Step 1 — text fades in, flourish line draws in step with it
   setTimeout(function () {
     if (inner) inner.classList.add("is-visible");
+    if (flourishPath && !reduceMotion) flourishPath.style.strokeDashoffset = "0";
   }, 200);
 
   // Step 2 — overlay fades out, scroll restored
@@ -23,114 +41,6 @@
   setTimeout(function () {
     loader.remove();
   }, 2950);
-})();
-
-/* ------------------------------------------------------------------
-   Splash loader smoke — billowing smoke behind the welcome text.
-   Blobs loop infinitely with randomised negative animation-delays so
-   the very first frame already reads as an ongoing flow rather than
-   everything blooming from zero in sync. The whole loader (and this
-   smoke with it) is removed from the DOM ~3s in, so no teardown is
-   needed here beyond not building it at all for reduced-motion users.
-   ------------------------------------------------------------------ */
-(function loaderSmoke() {
-  const smoke = document.getElementById("loaderSmoke");
-  if (!smoke) return;
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-  const back = document.getElementById("loaderSmokeBack");
-  const fore = document.getElementById("loaderSmokeFore");
-  const sparkLayer = document.getElementById("loaderSparkLayer");
-  const textureHolder = document.getElementById("loaderTextureHolder");
-  if (!back || !fore || !sparkLayer || !textureHolder) return;
-
-  // Back layer: fewer, larger, slower, softer — the hazy depth behind.
-  // [xPct, yPct, size, baseDelay, duration, peakOpacity]
-  const BACK_RECIPE = [
-    [18, 90, 640, 0.00, 6.6, 0.46],
-    [46, 94, 720, 0.10, 7.0, 0.48],
-    [74, 88, 600, 0.25, 6.4, 0.40],
-    [92, 82, 460, 0.40, 6.2, 0.30],
-  ];
-
-  // Fore layer: more numerous, smaller, faster, higher contrast — the
-  // energetic wisps closest to camera. Last field marks embers.
-  // [xPct, yPct, size, baseDelay, duration, peakOpacity, isEmber]
-  const FORE_RECIPE = [
-    [16, 84, 360, 0.00, 5.4, 0.62, false],
-    [32, 88, 320, 0.20, 5.8, 0.58, false],
-    [48, 82, 380, 0.08, 5.6, 0.64, false],
-    [50, 92, 260, 0.50, 5.0, 0.55, true],
-    [64, 86, 340, 0.28, 5.7, 0.56, false],
-    [80, 80, 300, 0.38, 5.3, 0.48, false],
-    [26, 62, 260, 0.48, 5.0, 0.34, false],
-    [58, 60, 240, 0.58, 5.2, 0.32, true],
-    [72, 64, 260, 0.42, 5.1, 0.36, false],
-    [40, 56, 220, 0.68, 4.8, 0.24, false],
-  ];
-
-  function addBlob(container, recipe, variance) {
-    const xPct = recipe[0], yPct = recipe[1], size = recipe[2];
-    const baseDelay = recipe[3], dur = recipe[4], peak = recipe[5], ember = recipe[6];
-
-    const blob = document.createElement("div");
-    blob.className = "smoke-blob" + (ember ? " is-ember" : "");
-    const jx = xPct + (Math.random() - 0.5) * variance;
-    const jy = yPct + (Math.random() - 0.5) * variance * 0.4;
-    blob.style.left = jx + "%";
-    blob.style.top = jy + "%";
-    blob.style.width = size + "px";
-    blob.style.height = size + "px";
-    blob.style.marginLeft = (-size / 2) + "px";
-    blob.style.marginTop = (-size / 2) + "px";
-    blob.style.borderRadius =
-      (46 + Math.random() * 20) + "% " + (54 - Math.random() * 20) + "% " +
-      (50 + Math.random() * 16) + "% " + (50 - Math.random() * 16) + "% / " +
-      (55 + Math.random() * 14) + "% " + (45 - Math.random() * 14) + "% " +
-      (58 + Math.random() * 10) + "% " + (42 - Math.random() * 10) + "%";
-
-    // Jitter duration per-instance so loops drift out of phase, and
-    // start each blob at a random point already inside its cycle
-    // (negative delay) so frame one already looks like a flow.
-    const jitteredDur = dur * (0.85 + Math.random() * 0.3);
-    const startDelay = -Math.random() * jitteredDur - baseDelay;
-
-    blob.style.setProperty("--delay", startDelay + "s");
-    blob.style.setProperty("--dur", jitteredDur + "s");
-    blob.style.setProperty("--peak", peak);
-    blob.style.setProperty("--x", (jx < 50 ? -1 : 1) * (24 + Math.random() * 40) + "px");
-    container.appendChild(blob);
-  }
-
-  function addSpark() {
-    const spark = document.createElement("div");
-    spark.className = "ember-spark";
-    const size = 3 + Math.random() * 4;
-    const x = 42 + Math.random() * 16;
-    const y = 88 + Math.random() * 8;
-    spark.style.left = x + "%";
-    spark.style.top = y + "%";
-    spark.style.width = size + "px";
-    spark.style.height = size + "px";
-    const dur = 3.2 + Math.random() * 1.8;
-    const delay = -Math.random() * dur;
-    spark.style.animationDuration = dur + "s";
-    spark.style.animationDelay = delay + "s";
-    spark.style.setProperty("--x", (Math.random() - 0.5) * 90 + "px");
-    sparkLayer.appendChild(spark);
-  }
-
-  BACK_RECIPE.forEach((r) => addBlob(back, r.concat(false), 6));
-  FORE_RECIPE.forEach((r) => addBlob(fore, r, 5));
-
-  for (let i = 0; i < 10; i++) addSpark();
-
-  const texture = document.createElement("div");
-  texture.className = "smoke-texture";
-  texture.style.setProperty("--delay", "0.1s");
-  texture.style.setProperty("--dur", "6.6s");
-  texture.style.setProperty("--peak", "0.5");
-  textureHolder.appendChild(texture);
 })();
 
 /* Header menu overlay open/close logic now lives in includes/header.js
