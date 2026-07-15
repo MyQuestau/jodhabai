@@ -787,7 +787,11 @@
      last row. Still far below back-to-top (80), CTAs (90), menu (100). */
   z-index: 3;
   background: var(--cream);
-  padding: 110px 56px 130px;
+  /* Extra top clearance (up from 110px) — the right-aligned copy block
+     now runs taller (lede + explainer), and needs to clear the fixed
+     Book now/Menu pills (bottom ~210px from viewport top) whenever this
+     section's top scrolls near the top of the viewport. */
+  padding: 230px 56px 130px;
 }
 
 .occasions__inner {
@@ -797,7 +801,7 @@
 
 .occasions__head {
   display: flex;
-  align-items: baseline;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 32px;
   flex-wrap: wrap;
@@ -813,12 +817,30 @@
   color: var(--muted);
 }
 
+.occasions__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 46ch;
+}
+
 .occasions__lede {
   font-family: "Instrument Serif", "Fraunces", Georgia, serif;
   font-size: clamp(17px, 1.5vw, 21px);
   line-height: 1.55;
   color: var(--muted);
-  max-width: 44ch;
+  margin: 0;
+  text-align: right;
+}
+
+/* Plain-spoken line stating exactly what's bookable, nested under the
+   poetic lede above — visitors need one concrete sentence answering
+   "what does this place actually offer". */
+.occasions__explainer {
+  font-family: var(--sans);
+  font-size: clamp(14px, 1vw, 15px);
+  line-height: 1.6;
+  color: var(--ink);
   margin: 0;
   text-align: right;
 }
@@ -1159,7 +1181,11 @@
   .occasions__head {
     margin-bottom: 36px;
   }
-  .occasions__lede {
+  .occasions__copy {
+    max-width: none;
+  }
+  .occasions__lede,
+  .occasions__explainer {
     text-align: left;
   }
   .occasion {
