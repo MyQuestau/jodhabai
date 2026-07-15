@@ -157,7 +157,7 @@
         form.reset();
       })
       .catch(function () {
-        showError("Something went wrong sending your message — email us directly at bookings@jodhabairetreat.com.");
+        showError("Something went wrong sending your message. Email us directly at bookings@jodhabairetreat.com.");
       });
   });
 

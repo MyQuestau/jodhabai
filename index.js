@@ -357,8 +357,8 @@
   // a frame-filling cell exposes triangular corner wedges).
   const ROTATE_START = 0.08;
   // Each headline line fades + rises in at its own scroll threshold.
-  const TEXT_1_AT = 0.42;      // "Enjoy the"
-  const TEXT_2_AT = 0.62;      // "Experience"
+  const TEXT_1_AT = 0.42;      // "The Whole"
+  const TEXT_2_AT = 0.62;      // "Estate"
 
   let ticking = false;
 
@@ -419,7 +419,7 @@
       section.classList.remove("is-zoomed-out");
     }
 
-    // Headline reveal — "Enjoy the" rises first, then "Experience".
+    // Headline reveal — "The Whole" rises first, then "Estate".
     if (progress >= TEXT_1_AT) {
       section.classList.add("is-text-1");
     } else {
