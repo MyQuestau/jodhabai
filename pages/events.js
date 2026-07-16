@@ -2,7 +2,8 @@
    1. Hero: side compression + darken on scroll (mirrors the homepage
       and Our Love Story heroes).
    2. Chapters: one-shot rise-in reveal per chapter pair.
-   3. Closing CTA: one-shot fade-up. */
+   3. Closing CTA: one-shot fade-up.
+   4. Lotus House photo slider: manual prev/next only, no autoplay. */
 
 /* ---- Hero: compress inward + darken on scroll ---- */
 (function evHeroScroll() {
@@ -91,4 +92,40 @@
     { threshold: 0.2 }
   );
   obs.observe(cta);
+})();
+
+/* ---- Lotus House photo slider — advances only on click, never on
+   a timer, so nothing moves unless the visitor asks it to. ---- */
+(function lotusSlider() {
+  const root = document.getElementById("lotusSlider");
+  if (!root) return;
+
+  const track = document.getElementById("lotusSliderTrack");
+  const slides = root.querySelectorAll(".ev-slider__slide");
+  const prevBtn = root.querySelector(".ev-slider__arrow--prev");
+  const nextBtn = root.querySelector(".ev-slider__arrow--next");
+  const countEl = document.getElementById("lotusSliderCount");
+  if (!track || !slides.length || !prevBtn || !nextBtn) return;
+
+  let index = 0;
+
+  function render() {
+    track.style.transform = "translateX(-" + index * 100 + "%)";
+    slides.forEach((slide, i) => {
+      slide.setAttribute("aria-hidden", i === index ? "false" : "true");
+    });
+    if (countEl) countEl.textContent = String(index + 1).padStart(2, "0");
+  }
+
+  prevBtn.addEventListener("click", () => {
+    index = (index - 1 + slides.length) % slides.length;
+    render();
+  });
+
+  nextBtn.addEventListener("click", () => {
+    index = (index + 1) % slides.length;
+    render();
+  });
+
+  render();
 })();
