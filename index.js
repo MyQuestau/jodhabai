@@ -76,24 +76,24 @@
     rows.forEach((r) => obs.observe(r));
   }
 
-  // ---- Cursor-trailing photo preview ----
-  const preview = document.getElementById("occasionPreview");
+  // ---- Cursor-trailing label ----
+  const preview = document.getElementById("occasionLabel");
   if (!preview) return;
-  const previewImg = preview.querySelector("img");
+  const previewText = document.getElementById("occasionLabelText");
 
   const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   if (!finePointer.matches || reducedMotion.matches) return;
 
   let targetX = 0, targetY = 0;   // where the cursor is
-  let curX = 0, curY = 0;         // where the card is (lerped)
+  let curX = 0, curY = 0;         // where the label is (lerped)
   let active = false;
   let rafId = null;
 
   function loop() {
-    // Ease the card toward the cursor for a soft trailing feel.
-    curX += (targetX - curX) * 0.12;
-    curY += (targetY - curY) * 0.12;
+    // Ease the label toward the cursor for a soft trailing feel.
+    curX += (targetX - curX) * 0.18;
+    curY += (targetY - curY) * 0.18;
     preview.style.left = curX.toFixed(1) + "px";
     preview.style.top = curY.toFixed(1) + "px";
 
@@ -110,14 +110,10 @@
 
   rows.forEach((row) => {
     row.addEventListener("mouseenter", (e) => {
-      const src = row.getAttribute("data-preview");
-      if (src && previewImg && previewImg.getAttribute("src") !== src) {
-        previewImg.setAttribute("src", src);
+      if (previewText) {
+        previewText.textContent = row.getAttribute("data-label") || "";
       }
-      if (previewImg) {
-        previewImg.style.objectPosition = row.getAttribute("data-preview-position") || "center";
-      }
-      // Snap the card to the cursor on entry so it doesn't fly across
+      // Snap the label to the cursor on entry so it doesn't fly across
       // the screen from wherever it was last dismissed.
       targetX = curX = e.clientX;
       targetY = curY = e.clientY;

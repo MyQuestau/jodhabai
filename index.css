@@ -1081,53 +1081,49 @@
   margin-top: 64px;
 }
 
-/* ---- Cursor-trailing photo preview (desktop pointer only) ---- */
-.occasion-preview {
+/* ---- Cursor-trailing label (desktop pointer only) ---- */
+.occasion-label {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 40;
-  width: clamp(220px, 22vw, 300px);
-  aspect-ratio: 4 / 5;
-  border-radius: 20px;
-  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
   pointer-events: none;
   opacity: 0;
-  transform: translate(-50%, -50%) rotate(-4deg) scale(0.88);
+  transform: translate(-50%, -50%) scale(0.85);
   transition:
-    opacity 0.35s var(--ease),
-    transform 0.45s var(--ease);
-  box-shadow: 0 30px 70px -25px rgba(0, 0, 0, 0.45);
+    opacity 0.3s var(--ease),
+    transform 0.4s var(--ease);
   will-change: transform, opacity;
 }
 
-.occasion-preview.is-active {
+.occasion-label.is-active {
   opacity: 1;
-  transform: translate(-50%, -50%) rotate(-4deg) scale(1);
+  transform: translate(-50%, -50%) scale(1);
 }
 
-.occasion-preview img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+.occasion-label__dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
 }
 
-/* Reuse the gallery corner marks, scaled to the preview card */
-.occasion-preview .gallery__corner {
-  width: 16px;
-  height: 16px;
+.occasion-label__text {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
-.occasion-preview .gallery__corner--tl { top: 12px; left: 12px; }
-.occasion-preview .gallery__corner--tr { top: 12px; right: 12px; }
-.occasion-preview .gallery__corner--bl { bottom: 12px; left: 12px; }
-.occasion-preview .gallery__corner--br { bottom: 12px; right: 12px; }
 
-/* Touch / no-hover devices never see the floating preview */
+/* Touch / no-hover devices never see the floating label */
 @media (hover: none), (pointer: coarse) {
-  .occasion-preview {
+  .occasion-label {
     display: none;
   }
 }
@@ -1137,14 +1133,14 @@
   .occasion.is-revealed,
   .occasion__title,
   .occasion__arrow,
-  .occasion-preview {
+  .occasion-label {
     transition: none;
   }
   .occasion {
     opacity: 1;
     transform: none;
   }
-  .occasion-preview {
+  .occasion-label {
     display: none;
   }
 }
