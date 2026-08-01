@@ -39,6 +39,23 @@
   to { transform: scale(1); }
 }
 
+/* Hero split three ways — same slow zoom per photo, side by side
+   instead of one full-bleed background. */
+.ev-hero__triptych {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+}
+
+.ev-hero__triptych .ev-hero__img {
+  position: relative;
+  inset: auto;
+  flex: 1 1 0;
+  width: auto;
+  height: 100%;
+}
+
 .ev-hero__darken {
   position: absolute;
   inset: 0;
