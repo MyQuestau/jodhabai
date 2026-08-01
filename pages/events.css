@@ -357,6 +357,118 @@
 }
 
 /* =========================================================
+   SCOPE — the full breadth of occasions hosted, as a clean
+   hairline tag grid rather than another photo/text chapter.
+   ========================================================= */
+.ev-scope {
+  position: relative;
+  z-index: 2;
+  background: var(--cream);
+  padding: 0 56px 90px;
+}
+
+.ev-scope__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.ev-scope__head {
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.ev-scope__tag {
+  display: block;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.ev-scope__title {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: clamp(30px, 3.6vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.ev-scope__title em {
+  font-family: "Instrument Serif", "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+
+.ev-scope__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.ev-scope__item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 30px 26px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  font-family: "Instrument Serif", "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(18px, 1.6vw, 22px);
+  color: var(--ink);
+  transition: background 0.35s var(--ease), color 0.35s var(--ease);
+}
+
+.ev-scope__mark {
+  flex: 0 0 auto;
+  font-size: 13px;
+  font-style: normal;
+  color: var(--accent);
+  transition: color 0.35s var(--ease);
+}
+
+.ev-scope__item:hover {
+  background: var(--ink);
+  color: var(--cream);
+}
+
+.ev-scope__item:hover .ev-scope__mark {
+  color: rgba(243, 237, 225, 0.7);
+}
+
+@media (max-width: 960px) {
+  .ev-scope__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .ev-scope {
+    padding: 0 20px 60px;
+  }
+  .ev-scope__head {
+    margin-bottom: 32px;
+  }
+  .ev-scope__grid {
+    grid-template-columns: 1fr;
+  }
+  .ev-scope__item {
+    padding: 22px 4px;
+    font-size: 17px;
+  }
+}
+
+/* =========================================================
    CLOSING CTA — cream, centred, gold pill, lift-off edge
    ========================================================= */
 .ev-cta {
