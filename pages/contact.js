@@ -5,7 +5,7 @@
   /* ============================================================
      FORM ENDPOINT — ⚠ FINAL SETUP STEP, currently in demo mode.
      1. Create a free form at https://formspree.io (or web3forms.com)
-        using bookings@jodhabairetreat.com
+        using venue@jodhabairetreat.com
      2. Paste the endpoint URL between the quotes below, e.g.
         var FORM_ENDPOINT = "https://formspree.io/f/abcdwxyz";
      While this is empty, submissions show the thank-you screen but
@@ -157,7 +157,7 @@
         form.reset();
       })
       .catch(function () {
-        showError("Something went wrong sending your message. Email us directly at bookings@jodhabairetreat.com.");
+        showError("Something went wrong sending your message. Email us directly at venue@jodhabairetreat.com.");
       });
   });
 
