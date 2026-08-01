@@ -269,6 +269,13 @@
   color: var(--accent);
 }
 
+.ps-option__right {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
 .ps-option__price {
   flex: 0 0 auto;
   font-family: var(--serif);
@@ -277,6 +284,33 @@
   letter-spacing: -0.02em;
   color: var(--ink);
   white-space: nowrap;
+}
+
+/* Enquire arrow — same circle-rotate pattern as the occasions rows
+   and events chapter links elsewhere on the site. */
+.ps-option__cta {
+  flex: 0 0 auto;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--ink);
+  transition: background 0.35s var(--ease), border-color 0.35s var(--ease),
+    color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+
+.ps-option__cta svg {
+  width: 16px;
+  height: 16px;
+}
+
+.ps-option__cta:hover {
+  background: var(--ink);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--cream);
+  transform: rotate(45deg);
 }
 
 .ps-tier__multiday {
